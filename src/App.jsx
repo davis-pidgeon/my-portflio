@@ -21,7 +21,7 @@ export default function Portfolio() {
         {/* Profile Section */}
         <div className="flex flex-col items-center">
           <motion.img
-            src={`${process.env.PUBLIC_URL}/images/davis1.jpeg`}
+            src="my-portfolio/images/davis1.jpeg"
             alt="Davis Pidgeon"
             className="w-32 h-32 rounded-full shadow-lg"
             initial={{ opacity: 0, scale: 0.8 }}
@@ -51,8 +51,8 @@ export default function Portfolio() {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2 }}
         >
-          <img src={`${process.env.PUBLIC_URL}/images/davis1.jpg`} alt="Travel" className="rounded-lg shadow-lg hover:scale-105 transition-transform duration-300" />
-          <img src={`${process.env.PUBLIC_URL}/images/davis1.jpg`} alt="Client Visit" className="rounded-lg shadow-lg hover:scale-105 transition-transform duration-300" />
+          <img src="my-portfolio/images/davis1.jpeg" alt="Travel" className="rounded-lg shadow-lg hover:scale-105 transition-transform duration-300" />
+          <img src="my-portfolio/images/davis1.jpeg" alt="Client Visit" className="rounded-lg shadow-lg hover:scale-105 transition-transform duration-300" />
         </motion.div>
 
         {/* Client Logos & Case Studies */}
@@ -60,9 +60,9 @@ export default function Portfolio() {
           <h2 className="text-2xl font-semibold text-center">Clients & Case Studies</h2>
           <div className="flex flex-wrap justify-center gap-8 mt-6">
             {[
-              { name: "Thistle", img: `${process.env.PUBLIC_URL}/images/thistle.jpeg`, url: "https://www.porterlogic.com/case-studies/porterlogic-helps-thistle-increase-yield-and-improve-margins" },
-              { name: "Million Dollar Baby", img: `${process.env.PUBLIC_URL}/images/hungryroot.jpeg`, url: "https://www.porterlogic.com/case-studies/how-hungryroot-got-its-time-back-by-automating-replenishment-with-porterlogic" },
-              { name: "Hungryroot", img: `${process.env.PUBLIC_URL}/images/award1.png`, url: "https://www.porterlogic.com/news-room/porterlogic-receives-supply-demand-chain-executive-and-food-logistics-2024-top-supply-chain-projects-award" },
+              { name: "Thistle", img: "my-portfolio/images/thistle.jpeg", url: "https://www.porterlogic.com/case-studies/porterlogic-helps-thistle-increase-yield-and-improve-margins" },
+              { name: "Million Dollar Baby", img: "my-portfolio/images/hungryroot.jpeg", url: "https://www.porterlogic.com/case-studies/how-hungryroot-got-its-time-back-by-automating-replenishment-with-porterlogic" },
+              { name: "Hungryroot", img: "my-portfolio/images/award1.png", url: "https://www.porterlogic.com/news-room/porterlogic-receives-supply-demand-chain-executive-and-food-logistics-2024-top-supply-chain-projects-award" },
             ].map((client) => (
               <motion.a
                 key={client.name}
