@@ -51,7 +51,7 @@ export default function Portfolio() {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2 }}
         >
-          <img src="https://davis-pidgeon.github.io/my-portfolio/images/client-visit.jpeg" alt="Travel" className="rounded-lg shadow-lg hover:scale-105 transition-transform duration-300" />
+          <img src="https://davis-pidgeon.github.io/my-portfolio/images/travel1.jpeg" alt="Travel" className="rounded-lg shadow-lg hover:scale-105 transition-transform duration-300" />
           <img src="https://davis-pidgeon.github.io/my-portfolio/images/client-visit.jpeg" alt="Client Visit" className="rounded-lg shadow-lg hover:scale-105 transition-transform duration-300" />
         </motion.div>
 
