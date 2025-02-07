@@ -27,7 +27,7 @@ jobs:
       - name: Debug: List project files before build
         run: ls -R
 
-      - name: Build the project
+      - name: Build the project with Vite
         run: npm run build
 
       - name: Debug: Check if dist/ exists
