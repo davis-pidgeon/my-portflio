@@ -62,7 +62,7 @@ export default function Portfolio() {
             {[
               { name: "Thistle", img: `${process.env.PUBLIC_URL}/images/thistle.jpeg`, url: "https://www.porterlogic.com/case-studies/porterlogic-helps-thistle-increase-yield-and-improve-margins" },
               { name: "Million Dollar Baby", img: `${process.env.PUBLIC_URL}/images/hungryroot.jpeg`, url: "https://www.porterlogic.com/case-studies/how-hungryroot-got-its-time-back-by-automating-replenishment-with-porterlogic" },
-              { name: "Hungryroot", img: `${process.env.PUBLIC_URL}/images/hungryroot.jpeg`, url: "https://www.porterlogic.com/case-studies/how-hungryroot-got-its-time-back-by-automating-replenishment-with-porterlogic" },
+              { name: "Hungryroot", img: `${process.env.PUBLIC_URL}/images/award1.png`, url: "https://www.porterlogic.com/news-room/porterlogic-receives-supply-demand-chain-executive-and-food-logistics-2024-top-supply-chain-projects-award" },
             ].map((client) => (
               <motion.a
                 key={client.name}
