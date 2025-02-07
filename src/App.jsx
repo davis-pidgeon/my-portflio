@@ -21,7 +21,7 @@ export default function Portfolio() {
         {/* Profile Section */}
         <div className="flex flex-col items-center">
           <motion.img
-            src={`${process.env.PUBLIC_URL}/images/profile.jpg`}
+            src={`${process.env.PUBLIC_URL}/images/davis1.jpg`}
             alt="Davis Pidgeon"
             className="w-32 h-32 rounded-full shadow-lg"
             initial={{ opacity: 0, scale: 0.8 }}
@@ -51,8 +51,8 @@ export default function Portfolio() {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2 }}
         >
-          <img src={`${process.env.PUBLIC_URL}/images/travel1.jpg`} alt="Travel" className="rounded-lg shadow-lg hover:scale-105 transition-transform duration-300" />
-          <img src={`${process.env.PUBLIC_URL}/images/client-onsite.jpg`} alt="Client Visit" className="rounded-lg shadow-lg hover:scale-105 transition-transform duration-300" />
+          <img src={`${process.env.PUBLIC_URL}/images/davis1.jpg`} alt="Travel" className="rounded-lg shadow-lg hover:scale-105 transition-transform duration-300" />
+          <img src={`${process.env.PUBLIC_URL}/images/davis1.jpg`} alt="Client Visit" className="rounded-lg shadow-lg hover:scale-105 transition-transform duration-300" />
         </motion.div>
 
         {/* Client Logos & Case Studies */}
