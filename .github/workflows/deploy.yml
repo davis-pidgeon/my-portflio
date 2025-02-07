@@ -24,15 +24,12 @@ jobs:
       - name: Install dependencies
         run: |
           npm install
-          npm install @vitejs/plugin-react --save-dev  # Fix missing dependency
-
-      - name: Debug List project files before build
-        run: ls -R
+          npm install @vitejs/plugin-react --save-dev
 
       - name: Build the project with Vite
         run: npm run build
 
-      - name: Debug Check if dist/ exists
+      - name: Debug: Check if dist/ exists
         run: ls -R dist || echo "❌ dist/ folder is missing!"
 
       - name: Deploy to GitHub Pages
@@ -40,3 +37,4 @@ jobs:
         with:
           branch: gh-pages
           folder: dist
+          clean: true  # Ensure old files are removed before deploying
