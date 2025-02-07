@@ -21,7 +21,7 @@ export default function Portfolio() {
         {/* Profile Section */}
         <div className="flex flex-col items-center">
           <motion.img
-            src={`${process.env.PUBLIC_URL}/images/davis1.jpg`}
+            src={`${process.env.PUBLIC_URL}/images/davis1.jpeg`}
             alt="Davis Pidgeon"
             className="w-32 h-32 rounded-full shadow-lg"
             initial={{ opacity: 0, scale: 0.8 }}
@@ -60,9 +60,9 @@ export default function Portfolio() {
           <h2 className="text-2xl font-semibold text-center">Clients & Case Studies</h2>
           <div className="flex flex-wrap justify-center gap-8 mt-6">
             {[
-              { name: "Thistle", img: `${process.env.PUBLIC_URL}/images/clients/thistle.png`, url: "https://www.porterlogic.com/case-studies/porterlogic-helps-thistle-increase-yield-and-improve-margins" },
-              { name: "Million Dollar Baby", img: `${process.env.PUBLIC_URL}/images/clients/million-dollar-baby.png`, url: "https://www.porterlogic.com/case-studies/how-hungryroot-got-its-time-back-by-automating-replenishment-with-porterlogic" },
-              { name: "Hungryroot", img: `${process.env.PUBLIC_URL}/images/clients/hungryroot.png`, url: "https://www.porterlogic.com/case-studies/how-hungryroot-got-its-time-back-by-automating-replenishment-with-porterlogic" },
+              { name: "Thistle", img: `${process.env.PUBLIC_URL}/images/thistle.jpeg`, url: "https://www.porterlogic.com/case-studies/porterlogic-helps-thistle-increase-yield-and-improve-margins" },
+              { name: "Million Dollar Baby", img: `${process.env.PUBLIC_URL}/images/hungryroot.jpeg`, url: "https://www.porterlogic.com/case-studies/how-hungryroot-got-its-time-back-by-automating-replenishment-with-porterlogic" },
+              { name: "Hungryroot", img: `${process.env.PUBLIC_URL}/images/hungryroot.jpeg`, url: "https://www.porterlogic.com/case-studies/how-hungryroot-got-its-time-back-by-automating-replenishment-with-porterlogic" },
             ].map((client) => (
               <motion.a
                 key={client.name}
