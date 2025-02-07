@@ -1,96 +1,61 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Davis Pidgeon - Portfolio</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 40px; padding: 20px; max-width: 900px; margin: auto; }
-        h1, h2 { color: #333; }
-        .section { margin-bottom: 20px; }
-        .contact { font-size: 16px; }
-        ul { list-style-type: none; padding: 0; }
-        li { margin: 5px 0; }
-        a { color: #0073e6; text-decoration: none; }
-    </style>
-</head>
-<body>
-    <h1>Davis Pidgeon</h1>
-    <p class="contact">Atlanta, GA | 404.538.0196 | <a href="mailto:davispidgeon81@gmail.com">davispidgeon81@gmail.com</a></p>
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
 
-    <div class="section">
-        <h2>Welcome to My Portfolio</h2>
-        <p>Hi, I'm Davis! I specialize in system design, implementation, and process optimization. This portfolio showcases my work in WMS, MRP, procurement systems, and software development.</p>
-    </div>
+export default function Portfolio() {
+  const [darkMode, setDarkMode] = useState(false);
 
-    <div class="section">
-        <h2>Case Studies & Sources</h2>
-        <ul>
-            <li><a href="https://www.porterlogic.com/case-studies/porterlogic-helps-thistle-increase-yield-and-improve-margins" target="_blank">Case Study: Thistle</a></li>
-            <li><a href="https://www.porterlogic.com/case-studies/how-hungryroot-got-its-time-back-by-automating-replenishment-with-porterlogic" target="_blank">Case Study: Million Dollar Baby</a></li>
-            <li><a href="https://www.porterlogic.com/news-room/porterlogic-receives-supply-demand-chain-executive-and-food-logistics-2024-top-supply-chain-projects-award" target="_blank">Press Release: 2024 Top Supply Chain Projects Award</a></li>
-            <li><a href="https://www.linkedin.com/in/davis-pidgeon-79761a114/" target="_blank">LinkedIn Profile</a></li>
-        </ul>
-    </div>
-
-    <div class="section">
-        <h2>Hobbies & Interests</h2>
-        <p>Outside of work, I enjoy hiking, traveling, mission work, and working on personal coding projects. I'm also passionate about mentoring and teaching others in the supply chain and tech space.</p>
-    </div>
-
-    <div class="section">
-        <h2>Core Competencies</h2>
-        <ul>
-            <li>System Design & Implementation: WMS, MRP, Procurement, Reporting</li>
-            <li>Database & Workflow Architecture: SQL, Low-Code Development, External System Integration</li>
-            <li>Process Automation & Optimization: Developed company-wide MRP model, Waste Calculations, and WM workflow functional specs</li>
-            <li>Client Engagement & Project Leadership: Stakeholder Communication, Training, Mentorship</li>
-            <li>Software & Technical Proficiency: Manhattan WMoS, PorterLogic, SQL (Postgres, Oracle), GitHub, VS Code, VBA, XML, Postman, Jira, Putty, FileZilla</li>
-        </ul>
-    </div>
-
-    <div class="section">
-        <h2>Professional Experience</h2>
-        <h3>PORTERLOGIC, Atlanta, GA (May 2023 - Present)</h3>
-        <p><strong>Lead Principal Solution Engineer</strong></p>
-        <ul>
-            <li>Led end-to-end WMS, MRP, and Procurement system implementations for multiple clients.</li>
-            <li>Designed and built 65+ unique UIs and 100+ workflows in a low-code platform.</li>
-            <li>Increased inventory accuracy by 20%, identifying $150K+ in hidden inventory.</li>
-            <li>Developed database structures to optimize ingredient tracking for meal kit orders.</li>
-            <li>Integrated external systems for seamless cross-platform compatibility.</li>
-            <li>Standardized client training and change management SOPs.</li>
-        </ul>
+  return (
+    <div className={`min-h-screen ${darkMode ? "bg-gray-900 text-white" : "bg-white text-black"}`}>
+      <div className="container mx-auto px-6 py-10">
+        <motion.h1
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-4xl font-bold text-center"
+        >
+          Davis Pidgeon
+        </motion.h1>
+        <p className="text-center mt-2">Atlanta, GA | <a href="mailto:davispidgeon81@gmail.com" className="underline">davispidgeon81@gmail.com</a></p>
         
-        <h3>MANHATTAN ASSOCIATES, Atlanta, GA (Jan 2020 - May 2023)</h3>
-        <p><strong>Senior Software Consultant (WMoS v2019)</strong></p>
-        <ul>
-            <li>Led WMS extension development and deployment for major distribution centers.</li>
-            <li>Mentored junior consultants and managed a team of three.</li>
-            <li>Developed Mod specifications, SQL modifications, and workflow optimizations.</li>
-            <li>Implemented voice-picking technology to improve efficiency.</li>
-        </ul>
-    </div>
+        <div className="flex justify-center mt-4">
+          <Button onClick={() => setDarkMode(!darkMode)}>Toggle Dark Mode</Button>
+        </div>
 
-    <div class="section">
-        <h2>Education</h2>
-        <p><strong>Mississippi State University</strong> - Bachelor of Science in Industrial and Systems Engineering</p>
-    </div>
+        <motion.section
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.2 }}
+          className="mt-10"
+        >
+          <h2 className="text-2xl font-semibold">Welcome to My Portfolio</h2>
+          <p className="mt-2">Hi, I'm Davis! I specialize in system design, implementation, and process optimization.</p>
+        </motion.section>
 
-    <div class="section">
-        <h2>Honors & Activities</h2>
-        <ul>
-            <li>2024 Top Supply Chain Projects Award (PorterLogic Implementation)</li>
-            <li>Manhattan Spirit Award (Q3 2021)</li>
-        </ul>
-    </div>
+        <motion.section
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.4 }}
+          className="mt-10"
+        >
+          <h2 className="text-2xl font-semibold">Case Studies & Sources</h2>
+          <ul className="mt-2 space-y-2">
+            <li><a href="https://www.porterlogic.com/case-studies/porterlogic-helps-thistle-increase-yield-and-improve-margins" className="underline" target="_blank">Thistle Case Study</a></li>
+            <li><a href="https://www.porterlogic.com/case-studies/how-hungryroot-got-its-time-back-by-automating-replenishment-with-porterlogic" className="underline" target="_blank">Million Dollar Baby Case Study</a></li>
+            <li><a href="https://www.porterlogic.com/news-room/porterlogic-receives-supply-demand-chain-executive-and-food-logistics-2024-top-supply-chain-projects-award" className="underline" target="_blank">Press Release: Top Supply Chain Projects Award</a></li>
+            <li><a href="https://www.linkedin.com/in/davis-pidgeon-79761a114/" className="underline" target="_blank">LinkedIn Profile</a></li>
+          </ul>
+        </motion.section>
 
-    <div class="section">
-        <h2>Volunteering</h2>
-        <ul>
-            <li>Deacon & Setup Team – Christ Covenant Church</li>
-            <li>Mission Work: Peru, China, Guatemala, Dominican Republic, Clarkson, GA</li>
-        </ul>
+        <motion.section
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.6 }}
+          className="mt-10"
+        >
+          <h2 className="text-2xl font-semibold">Hobbies & Interests</h2>
+          <p className="mt-2">I enjoy hiking, traveling, mission work, and coding projects.</p>
+        </motion.section>
+      </div>
     </div>
-</body>
-</html>
+  );
+}
