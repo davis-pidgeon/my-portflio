@@ -21,7 +21,7 @@ export default function Portfolio() {
         {/* Profile Section */}
         <div className="flex flex-col items-center">
           <motion.img
-            src="my-portfolio/images/davis1.jpeg"
+            src="https://davis-pidgeon.github.io/my-portfolio/images/davis1.jpeg"
             alt="Davis Pidgeon"
             className="w-32 h-32 rounded-full shadow-lg"
             initial={{ opacity: 0, scale: 0.8 }}
