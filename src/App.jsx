@@ -51,8 +51,8 @@ export default function Portfolio() {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2 }}
         >
-          <img src="my-portfolio/images/davis1.jpeg" alt="Travel" className="rounded-lg shadow-lg hover:scale-105 transition-transform duration-300" />
-          <img src="my-portfolio/images/davis1.jpeg" alt="Client Visit" className="rounded-lg shadow-lg hover:scale-105 transition-transform duration-300" />
+          <img src="https://davis-pidgeon.github.io/my-portfolio/images/client-visit.jpeg" alt="Travel" className="rounded-lg shadow-lg hover:scale-105 transition-transform duration-300" />
+          <img src="https://davis-pidgeon.github.io/my-portfolio/images/client-visit.jpeg" alt="Client Visit" className="rounded-lg shadow-lg hover:scale-105 transition-transform duration-300" />
         </motion.div>
 
         {/* Client Logos & Case Studies */}
@@ -60,10 +60,11 @@ export default function Portfolio() {
           <h2 className="text-2xl font-semibold text-center">Clients & Case Studies</h2>
           <div className="flex flex-wrap justify-center gap-8 mt-6">
             {[
-              { name: "Thistle", img: "my-portfolio/images/thistle.jpeg", url: "https://www.porterlogic.com/case-studies/porterlogic-helps-thistle-increase-yield-and-improve-margins" },
-              { name: "Million Dollar Baby", img: "my-portfolio/images/hungryroot.jpeg", url: "https://www.porterlogic.com/case-studies/how-hungryroot-got-its-time-back-by-automating-replenishment-with-porterlogic" },
-              { name: "Hungryroot", img: "my-portfolio/images/award1.png", url: "https://www.porterlogic.com/news-room/porterlogic-receives-supply-demand-chain-executive-and-food-logistics-2024-top-supply-chain-projects-award" },
-            ].map((client) => (
+              { name: "Thistle", img: "https://davis-pidgeon.github.io/my-portfolio/images/thistle.jpeg", url: "https://www.porterlogic.com/case-studies/porterlogic-helps-thistle-increase-yield-and-improve-margins" },
+              { name: "Hungryroot", img: "https://davis-pidgeon.github.io/my-portfolio/images/hungryroot.jpeg", url: "https://www.porterlogic.com/case-studies/how-hungryroot-got-its-time-back-by-automating-replenishment-with-porterlogic" },
+              { name: "Award", img: "https://davis-pidgeon.github.io/my-portfolio/images/award1.png", url: "https://www.porterlogic.com/news-room/porterlogic-receives-supply-demand-chain-executive-and-food-logistics-2024-top-supply-chain-projects-award" },
+              { name: "LinkedIN", img: "https://davis-pidgeon.github.io/my-portfolio/images/linkenIn.jpeg", url: "https://www.linkedin.com/in/davis-pidgeon-79761a114/" },
+              ].map((client) => (
               <motion.a
                 key={client.name}
                 href={client.url}
