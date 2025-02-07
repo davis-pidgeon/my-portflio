@@ -1,2 +1,2 @@
 # my-portflio
-Davis Pidgeon Public Portfolio
+Davis Pidgeon Portfolio
