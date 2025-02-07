@@ -4,16 +4,14 @@ import { motion } from "framer-motion";
 export default function Portfolio() {
   const [darkMode, setDarkMode] = useState(() => localStorage.getItem("theme") === "dark");
 
-  useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    }
-  }, [darkMode]);
-
+  // Function to toggle theme
+  const toggleTheme = () => {
+    const newTheme = darkMode ? "light" : "dark";
+    localStorage.setItem("theme", newTheme);
+    document.documentElement.classList.toggle("dark");
+    setDarkMode(!darkMode);
+  };
+  
   return (
     <div className="min-h-screen bg-white text-black dark:bg-gray-900 dark:text-white">
       <div className="container mx-auto px-6 py-12">
