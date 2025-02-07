@@ -29,7 +29,7 @@ jobs:
       - name: Build the project with Vite
         run: npm run build
 
-      - name: Debug: Check if dist/ exists
+      - name: Debug Check if dist/ exists
         run: ls -R dist || echo "❌ dist/ folder is missing!"
 
       - name: Deploy to GitHub Pages
