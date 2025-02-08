@@ -23,9 +23,14 @@ export default function Portfolio() {
   ];
 
   const hobbyPhotos = [
-    { name: "Hiking", img: "https://davis-pidgeon.github.io/my-portfolio/images/travel1.jpeg" },
-    { name: "Camping", img: "https://davis-pidgeon.github.io/my-portfolio/images/davis1.jpeg" },
-    { name: "Volunteering", img: "https://davis-pidgeon.github.io/my-portfolio/images/travel1.jpeg" }
+    { name: "Accadia NP", img: "https://davis-pidgeon.github.io/my-portfolio/images/travel1.jpeg" },
+    { name: "Olympic NP", img: "https://davis-pidgeon.github.io/my-portfolio/images/davis1.jpeg" },
+    { name: "Olympic NP", img: "https://davis-pidgeon.github.io/my-portfolio/images/travel2.jpeg" },
+    { name: "Yosimite NP", img: "https://davis-pidgeon.github.io/my-portfolio/images/travel3.jpeg" },
+    { name: "Joshua Tree NP", img: "https://davis-pidgeon.github.io/my-portfolio/images/travel4.jpeg" },
+    { name: "Rocky Mnt NP", img: "https://davis-pidgeon.github.io/my-portfolio/images/travel5.jpeg" },
+    { name: "Pikes Peak", img: "https://davis-pidgeon.github.io/my-portfolio/images/travel6.jpeg" },
+    { name: "Camping", img: "https://davis-pidgeon.github.io/my-portfolio/images/travel7.jpeg" }
   ];
 
   // Auto-transition every 4 seconds
