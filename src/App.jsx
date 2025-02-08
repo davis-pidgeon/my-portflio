@@ -130,7 +130,7 @@ export default function Portfolio() {
               {currentJobPhotos.map((photo) => (
                 <motion.div
                   key={photo.name}
-                  className="relative w-95 h-56 overflow-hidden rounded-lg shadow-lg cursor-pointer"
+                  className="relative w-[500px] h-[300px] overflow-hidden rounded-lg shadow-lg cursor-pointer"
                   onMouseEnter={() => setIsHovered(true)}
                   onMouseLeave={() => setIsHovered(false)}
                   initial={{ opacity: 0, scale: 0.9 }}
@@ -144,7 +144,7 @@ export default function Portfolio() {
                     className="w-full h-full object-cover"
                     whileHover={{ scale: 1.1 }}
                   />
-                  <div className="absolute bottom-0 bg-black bg-opacity-50 text-white text-center w-full py-1">
+                  <div className="absolute bottom-0 bg-black bg-opacity-50 text-white text-center w-full py-2 text-lg">
                     {photo.name}
                   </div>
                 </motion.div>
@@ -161,7 +161,7 @@ export default function Portfolio() {
               {currentHobbyPhotos.map((photo) => (
                 <motion.div
                   key={photo.name}
-                  className="relative w-95 h-56 overflow-hidden rounded-lg shadow-lg cursor-pointer"
+                  className="relative w-[500px] h-[300px] overflow-hidden rounded-lg shadow-lg cursor-pointer"
                   onMouseEnter={() => setIsHovered(true)}
                   onMouseLeave={() => setIsHovered(false)}
                   initial={{ opacity: 0, scale: 0.9 }}
@@ -175,7 +175,7 @@ export default function Portfolio() {
                     className="w-full h-full object-cover"
                     whileHover={{ scale: 1.1 }}
                   />
-                  <div className="absolute bottom-0 bg-black bg-opacity-50 text-white text-center w-full py-1">
+                  <div className="absolute bottom-0 bg-black bg-opacity-50 text-white text-center w-full py-2 text-lg">
                     {photo.name}
                   </div>
                 </motion.div>
