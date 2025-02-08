@@ -12,20 +12,20 @@ export default function Portfolio() {
   const [currentIndexHobby, setCurrentIndexHobby] = useState(0);
 
   const jobPhotos = [
-    { name: "Client Visit", img: "https://davis-pidgeon.github.io/my-portfolio/images/client-visit.jpeg" },
-    { name: "Thistle Work", img: "https://davis-pidgeon.github.io/my-portfolio/images/on-the-job1.jpeg" },
+    { name: "Client Visit with PPE", img: "https://davis-pidgeon.github.io/my-portfolio/images/client-visit.jpeg" },
+    { name: "Full Circle Moment!", img: "https://davis-pidgeon.github.io/my-portfolio/images/on-the-job1.jpeg" },
     { name: "MODEX", img: "https://davis-pidgeon.github.io/my-portfolio/images/on-the-job2.jpeg" },
-    { name: "Manhattan Office", img: "https://davis-pidgeon.github.io/my-portfolio/images/on-the-job5.jpeg" },
+    { name: "Manhattan Associates", img: "https://davis-pidgeon.github.io/my-portfolio/images/on-the-job5.jpeg" },
     { name: "CSCMP", img: "https://davis-pidgeon.github.io/my-portfolio/images/on-the-job3.jpeg" },
-    { name: "ACE Hardware", img: "https://davis-pidgeon.github.io/my-portfolio/images/on-the-job4.jpeg" },
-    { name: "Thistle Visit", img: "https://davis-pidgeon.github.io/my-portfolio/images/on-the-job6.jpeg" },
+    { name: "ACE Colorado Springs Warehouse", img: "https://davis-pidgeon.github.io/my-portfolio/images/on-the-job4.jpeg" },
+    { name: "Client Visit", img: "https://davis-pidgeon.github.io/my-portfolio/images/on-the-job6.jpeg" },
     { name: "CSCMP Jedi", img: "https://davis-pidgeon.github.io/my-portfolio/images/on-the-job7.jpeg" }
   ];
 
    const hobbyPhotos = [
      { name: "Accadia NP", img: "https://davis-pidgeon.github.io/my-portfolio/images/travel1.jpeg" },
-     { name: "Olympic NP", img: "https://davis-pidgeon.github.io/my-portfolio/images/davis1.jpeg" },
-     { name: "Olympic NP", img: "https://davis-pidgeon.github.io/my-portfolio/images/travel2.jpeg" },
+     { name: "Olympic NP Sunrise", img: "https://davis-pidgeon.github.io/my-portfolio/images/davis1.jpeg" },
+     { name: "Olympic NP Beach Day", img: "https://davis-pidgeon.github.io/my-portfolio/images/travel2.jpeg" },
      { name: "Yosemite NP", img: "https://davis-pidgeon.github.io/my-portfolio/images/travel3.jpeg" },
      { name: "Joshua Tree NP", img: "https://davis-pidgeon.github.io/my-portfolio/images/travel4.jpeg" },
      { name: "Rocky Mnt NP", img: "https://davis-pidgeon.github.io/my-portfolio/images/travel5.jpeg" },
