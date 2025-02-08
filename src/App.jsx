@@ -63,7 +63,7 @@ export default function Portfolio() {
   }, [isHovered]);
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
+    <div className="min-h-screen bg-[#f9f8f6] text-[#2d3748]">
       <div className="container mx-auto px-6 py-12">
         
         {/* Profile Section */}
@@ -71,15 +71,15 @@ export default function Portfolio() {
           <motion.img
             src="https://davis-pidgeon.github.io/my-portfolio/images/davis2.jpeg"
             alt="Davis Pidgeon"
-            className="w-40 h-40 rounded-full shadow-lg border-4 border-gray-700"
+            className="w-40 h-40 rounded-full shadow-lg border-4 border-[#c2a77d]"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
           />
-          <h1 className="text-4xl font-bold text-center">Davis Pidgeon</h1>
+          <h1 className="text-4xl font-bold text-center text-[#0077b6]">Davis Pidgeon</h1>
           <p className="text-center text-lg">
             Atlanta, GA |{" "}
-            <a href="mailto:davispidgeon81@gmail.com" className="underline hover:text-yellow-400 transition">
+            <a href="mailto:davispidgeon81@gmail.com" className="underline text-[#0077b6] hover:text-[#005f91] transition">
               davispidgeon81@gmail.com
             </a>
           </p>
@@ -98,7 +98,7 @@ export default function Portfolio() {
 
         {/* Case Studies & Helpful Links Section */}
         <div className="mt-12">
-          <h2 className="text-2xl font-semibold text-center mb-6">Case Studies & Helpful Links</h2>
+          <h2 className="text-2xl font-semibold text-center mb-6 text-[#0077b6]">Case Studies & Helpful Links</h2>
           <div className="flex flex-wrap justify-center gap-8">
              {[
                { name: "Thistle", img: "https://davis-pidgeon.github.io/my-portfolio/images/thistle.jpeg", url: "https://www.porterlogic.com/case-studies/porterlogic-helps-thistle-increase-yield-and-improve-margins" },
@@ -124,13 +124,13 @@ export default function Portfolio() {
 
         {/* Job Photos Section */}
         <div className="mt-12 text-center">
-          <h2 className="text-2xl font-semibold mb-6">On the Job</h2>
+          <h2 className="text-2xl font-semibold mb-6 text-[#0077b6]">On the Job</h2>
           <div className="flex justify-center gap-6">
             <AnimatePresence>
               {currentJobPhotos.map((photo) => (
                 <motion.div
                   key={photo.name}
-                  className="relative w-[500px] h-[300px] overflow-hidden rounded-lg shadow-lg cursor-pointer"
+                  className="relative w-[500px] h-[300px] overflow-hidden rounded-lg shadow-lg cursor-pointer bg-white border-2 border-[#c2a77d]"
                   onMouseEnter={() => setIsHovered(true)}
                   onMouseLeave={() => setIsHovered(false)}
                   initial={{ opacity: 0, scale: 0.9 }}
@@ -144,7 +144,7 @@ export default function Portfolio() {
                     className="w-full h-full object-cover"
                     whileHover={{ scale: 1.05 }}
                   />
-                  <div className="absolute bottom-0 bg-black bg-opacity-50 text-white text-center w-full py-2 text-lg">
+                  <div className="absolute bottom-0 bg-[#c2a77d] bg-opacity-50 text-white text-center w-full py-2 text-lg">
                     {photo.name}
                   </div>
                 </motion.div>
@@ -155,13 +155,13 @@ export default function Portfolio() {
 
         {/* Hobby Photos Section */}
         <div className="mt-12 text-center">
-          <h2 className="text-2xl font-semibold mb-6">After Hours</h2>
+          <h2 className="text-2xl font-semibold mb-6 text-[#0077b6]">After Hours</h2>
           <div className="flex justify-center gap-6">
             <AnimatePresence>
               {currentHobbyPhotos.map((photo) => (
                 <motion.div
                   key={photo.name}
-                  className="relative w-[500px] h-[300px] overflow-hidden rounded-lg shadow-lg cursor-pointer"
+                  className="relative w-[500px] h-[300px] overflow-hidden rounded-lg shadow-lg cursor-pointer bg-white border-2 border-[#c2a77d]"
                   onMouseEnter={() => setIsHovered(true)}
                   onMouseLeave={() => setIsHovered(false)}
                   initial={{ opacity: 0, scale: 0.9 }}
@@ -175,7 +175,7 @@ export default function Portfolio() {
                     className="w-full h-full object-cover"
                     whileHover={{ scale: 1.1 }}
                   />
-                  <div className="absolute bottom-0 bg-black bg-opacity-50 text-white text-center w-full py-2 text-lg">
+                  <div className="absolute bottom-0 bg-[#c2a77d] bg-opacity-50 text-white text-center w-full py-2 text-lg">
                     {photo.name}
                   </div>
                 </motion.div>
