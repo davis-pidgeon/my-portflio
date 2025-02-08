@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
 
 export default function Portfolio() {
@@ -6,6 +6,22 @@ export default function Portfolio() {
   useEffect(() => {
     document.documentElement.classList.add("dark");
   }, []);
+
+  // State for controlling the photo carousel
+  const [scrollX, setScrollX] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const containerRef = useRef(null);
+
+  // Function to scroll images manually
+  const handleScroll = (direction) => {
+    if (containerRef.current) {
+      const scrollAmount = 300; // Adjust scroll speed
+      containerRef.current.scrollBy({
+        left: direction === "right" ? scrollAmount : -scrollAmount,
+        behavior: "smooth",
+      });
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gray-900 text-white">
@@ -69,49 +85,61 @@ export default function Portfolio() {
         {/* Photos Section */}
         <div className="mt-12">
           <h2 className="text-2xl font-semibold text-center mb-6">On the Job</h2>
-          <motion.div
-            className="flex space-x-8 overflow-hidden"
-            initial={{ x: "100%" }}
-            animate={{ x: "-100%" }}
-            transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
-          >
-            {[
-              { name: "Client Visit", img: "https://davis-pidgeon.github.io/my-portfolio/images/client-visit.jpeg" },
-              { name: "Warehouse Work", img: "https://davis-pidgeon.github.io/my-portfolio/images/on-the-job1.jpeg" },
-              { name: "Warehouse Work", img: "https://davis-pidgeon.github.io/my-portfolio/images/on-the-job2.jpeg" },
-              { name: "Warehouse Work", img: "https://davis-pidgeon.github.io/my-portfolio/images/on-the-job3.jpeg" }
-            ].map((item) => (
-              <motion.img
-                key={item.name}
-                src={item.img}
-                alt={item.name}
-                className="rounded-lg shadow-lg w-64 h-auto"
-              />
-            ))}
-          </motion.div>
+          <div className="relative overflow-hidden">
+            <motion.div
+              ref={containerRef}
+              className="flex space-x-6 overflow-x-auto scroll-smooth"
+              onMouseEnter={() => setIsPaused(true)}
+              onMouseLeave={() => setIsPaused(false)}
+            >
+              {[
+                { name: "Client Visit", img: "https://davis-pidgeon.github.io/my-portfolio/images/client-visit.jpeg" },
+                { name: "Thistle Work", img: "https://davis-pidgeon.github.io/my-portfolio/images/on-the-job-1.jpeg" },
+                { name: "MODEX", img: "https://davis-pidgeon.github.io/my-portfolio/images/on-the-job-2.jpeg" },
+                { name: "Manhattan Office", img: "https://davis-pidgeon.github.io/my-portfolio/images/on-the-job-5.jpeg" },
+                { name: "CSCMP", img: "https://davis-pidgeon.github.io/my-portfolio/images/on-the-job-3.jpeg" },
+                { name: "ACE Hardware", img: "https://davis-pidgeon.github.io/my-portfolio/images/on-the-job-4.jpeg" },
+                { name: "Thistle Visit", img: "https://davis-pidgeon.github.io/my-portfolio/images/on-the-job-6.jpeg" },
+                { name: "CSCMP Jedi", img: "https://davis-pidgeon.github.io/my-portfolio/images/on-the-job-7.jpeg" }
+              ].map((item) => (
+                <motion.img
+                  key={item.name}
+                  src={item.img}
+                  alt={item.name}
+                  className="rounded-lg shadow-lg w-64 h-auto"
+                />
+              ))}
+            </motion.div>
+            <button className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-gray-800 p-2 rounded-full" onClick={() => handleScroll("left")}>⬅️</button>
+            <button className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-gray-800 p-2 rounded-full" onClick={() => handleScroll("right")}>➡️</button>
+          </div>
         </div>
 
         <div className="mt-12">
           <h2 className="text-2xl font-semibold text-center mb-6">After Hours</h2>
-          <motion.div
-            className="flex space-x-8 overflow-hidden"
-            initial={{ x: "100%" }}
-            animate={{ x: "-100%" }}
-            transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
-          >
-            {[
-              { name: "Hiking", img: "https://davis-pidgeon.github.io/my-portfolio/images/travel1.jpeg" },
-              { name: "Camping", img: "https://davis-pidgeon.github.io/my-portfolio/images/davis1.jpeg" },
-              { name: "Volunteering", img: "https://davis-pidgeon.github.io/my-portfolio/images/travel1.jpeg" }
-            ].map((item) => (
-              <motion.img
-                key={item.name}
-                src={item.img}
-                alt={item.name}
-                className="rounded-lg shadow-lg w-64 h-auto"
-              />
-            ))}
-          </motion.div>
+          <div className="relative overflow-hidden">
+            <motion.div
+              ref={containerRef}
+              className="flex space-x-6 overflow-x-auto scroll-smooth"
+              onMouseEnter={() => setIsPaused(true)}
+              onMouseLeave={() => setIsPaused(false)}
+            >
+              {[
+                { name: "Hiking", img: "https://davis-pidgeon.github.io/my-portfolio/images/travel1.jpeg" },
+                { name: "Camping", img: "https://davis-pidgeon.github.io/my-portfolio/images/davis1.jpeg" },
+                { name: "Volunteering", img: "https://davis-pidgeon.github.io/my-portfolio/images/travel1.jpeg" }
+              ].map((item) => (
+                <motion.img
+                  key={item.name}
+                  src={item.img}
+                  alt={item.name}
+                  className="rounded-lg shadow-lg w-64 h-auto"
+                />
+              ))}
+            </motion.div>
+            <button className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-gray-800 p-2 rounded-full" onClick={() => handleScroll("left")}>⬅️</button>
+            <button className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-gray-800 p-2 rounded-full" onClick={() => handleScroll("right")}>➡️</button>
+          </div>
         </div>
 
       </div>
