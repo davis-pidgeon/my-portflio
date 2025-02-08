@@ -13,11 +13,13 @@ export default function Portfolio() {
 
   const jobPhotos = [
     { name: "Client Visit", img: "https://davis-pidgeon.github.io/my-portfolio/images/client-visit.jpeg" },
-    { name: "Thistle Work", img: "https://davis-pidgeon.github.io/my-portfolio/images/on-the-job-1.jpeg" },
-    { name: "MODEX", img: "https://davis-pidgeon.github.io/my-portfolio/images/on-the-job-2.jpeg" },
-    { name: "Manhattan Office", img: "https://davis-pidgeon.github.io/my-portfolio/images/on-the-job-5.jpeg" },
-    { name: "CSCMP", img: "https://davis-pidgeon.github.io/my-portfolio/images/on-the-job-3.jpeg" },
-    { name: "ACE Hardware", img: "https://davis-pidgeon.github.io/my-portfolio/images/on-the-job-4.jpeg" }
+    { name: "Thistle Work", img: "https://davis-pidgeon.github.io/my-portfolio/images/on-the-job1.jpeg" },
+    { name: "MODEX", img: "https://davis-pidgeon.github.io/my-portfolio/images/on-the-job2.jpeg" },
+    { name: "Manhattan Office", img: "https://davis-pidgeon.github.io/my-portfolio/images/on-the-job5.jpeg" },
+    { name: "CSCMP", img: "https://davis-pidgeon.github.io/my-portfolio/images/on-the-job3.jpeg" },
+    { name: "ACE Hardware", img: "https://davis-pidgeon.github.io/my-portfolio/images/on-the-job4.jpeg" },
+    { name: "Thistle Visit", img: "https://davis-pidgeon.github.io/my-portfolio/images/on-the-job6.jpeg" },
+    { name: "CSCMP Jedi", img: "https://davis-pidgeon.github.io/my-portfolio/images/on-the-job7.jpeg" }
   ];
 
   const hobbyPhotos = [
