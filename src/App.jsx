@@ -135,14 +135,14 @@ export default function Portfolio() {
                   onMouseLeave={() => setIsHovered(false)}
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 1.1 }}
-                  transition={{ duration: 0.8 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.6 }}
                 >
                   <motion.img
                     src={photo.img}
                     alt={photo.name}
                     className="w-full h-full object-cover"
-                    whileHover={{ scale: 1.1 }}
+                    whileHover={{ scale: 1.05 }}
                   />
                   <div className="absolute bottom-0 bg-black bg-opacity-50 text-white text-center w-full py-2 text-lg">
                     {photo.name}
