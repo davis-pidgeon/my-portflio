@@ -33,21 +33,34 @@ export default function Portfolio() {
      { name: "Camping", img: "https://davis-pidgeon.github.io/my-portfolio/images/travel7.jpeg" }
   ];
 
-  // Auto-transition every 5 seconds
+    // Function to get random 3 photos (ensuring no back-to-back repeats)
+  const getRandomPhotos = (photoArray, currentPhotos) => {
+    let newPhotos = [];
+    while (newPhotos.length < 3) {
+      let randomPhoto = photoArray[Math.floor(Math.random() * photoArray.length)];
+      if (!newPhotos.includes(randomPhoto) && !currentPhotos.includes(randomPhoto)) {
+        newPhotos.push(randomPhoto);
+      }
+    }
+    return newPhotos;
+  };
+
+    // States for both sections
+  const [currentJobPhotos, setCurrentJobPhotos] = useState(getRandomPhotos(jobPhotos, []));
+  const [currentHobbyPhotos, setCurrentHobbyPhotos] = useState(getRandomPhotos(hobbyPhotos, []));
+  const [isHovered, setIsHovered] = useState(false);
+
+  // Auto-transition every 5 seconds unless hovering
   useEffect(() => {
-    const intervalJob = setInterval(() => {
-      setCurrentIndexJob((prev) => (prev + 1) % jobPhotos.length);
-    }, 5000);
+    if (!isHovered) {
+      const interval = setInterval(() => {
+        setCurrentJobPhotos((prev) => getRandomPhotos(jobPhotos, prev));
+        setCurrentHobbyPhotos((prev) => getRandomPhotos(hobbyPhotos, prev));
+      }, 5000);
 
-    const intervalHobby = setInterval(() => {
-      setCurrentIndexHobby((prev) => (prev + 1) % hobbyPhotos.length);
-    }, 5000);
-
-    return () => {
-      clearInterval(intervalJob);
-      clearInterval(intervalHobby);
-    };
-  }, []);
+      return () => clearInterval(interval);
+    }
+  }, [isHovered]);
 
   return (
     <div className="min-h-screen bg-gray-900 text-white">
@@ -108,73 +121,66 @@ export default function Portfolio() {
           </div>
         </div>
 
-        {/* On the Job Section */}
+
+        {/* Job Photos Section */}
         <div className="mt-12 text-center">
           <h2 className="text-2xl font-semibold mb-6">On the Job</h2>
-          <div className="relative w-full flex justify-center items-center">
-            <button 
-              onClick={() => setCurrentIndexJob((prev) => (prev - 1 + jobPhotos.length) % jobPhotos.length)} 
-              className="absolute left-0 p-3 bg-gray-800 hover:bg-gray-700 rounded-full transition"
-            >
-              ⬅️
-            </button>
-
-            <div className="w-[450px] h-[300px] relative flex justify-center items-center">
-              <AnimatePresence mode="wait">
-                <motion.img
-                  key={jobPhotos[currentIndexJob].name}
-                  src={jobPhotos[currentIndexJob].img}
-                  alt={jobPhotos[currentIndexJob].name}
-                  className="absolute w-full h-full object-cover rounded-lg shadow-lg"
+          <div className="flex justify-center gap-6">
+            <AnimatePresence>
+              {currentJobPhotos.map((photo) => (
+                <motion.div
+                  key={photo.name}
+                  className="relative w-64 h-40 overflow-hidden rounded-lg shadow-lg cursor-pointer"
+                  onMouseEnter={() => setIsHovered(true)}
+                  onMouseLeave={() => setIsHovered(false)}
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 1.1 }}
-                  transition={{ duration: 1 }}
-                />
-              </AnimatePresence>
-            </div>
-
-            <button 
-              onClick={() => setCurrentIndexJob((prev) => (prev + 1) % jobPhotos.length)} 
-              className="absolute right-0 p-3 bg-gray-800 hover:bg-gray-700 rounded-full transition"
-            >
-              ➡️
-            </button>
+                  transition={{ duration: 0.8 }}
+                >
+                  <motion.img
+                    src={photo.img}
+                    alt={photo.name}
+                    className="w-full h-full object-cover"
+                    whileHover={{ scale: 1.1 }}
+                  />
+                  <div className="absolute bottom-0 bg-black bg-opacity-50 text-white text-center w-full py-1">
+                    {photo.name}
+                  </div>
+                </motion.div>
+              ))}
+            </AnimatePresence>
           </div>
         </div>
 
-        {/* After Hours Section */}
+        {/* Hobby Photos Section */}
         <div className="mt-12 text-center">
           <h2 className="text-2xl font-semibold mb-6">After Hours</h2>
-          <div className="relative w-full flex justify-center items-center">
-            <button 
-              onClick={() => setCurrentIndexHobby((prev) => (prev - 1 + hobbyPhotos.length) % hobbyPhotos.length)} 
-              className="absolute left-0 p-3 bg-gray-800 hover:bg-gray-700 rounded-full transition"
-            >
-              ⬅️
-            </button>
-
-            <div className="w-[450px] h-[300px] relative flex justify-center items-center">
-              <AnimatePresence mode="wait">
-                <motion.img
-                  key={hobbyPhotos[currentIndexHobby].name}
-                  src={hobbyPhotos[currentIndexHobby].img}
-                  alt={hobbyPhotos[currentIndexHobby].name}
-                  className="absolute w-full h-full object-cover rounded-lg shadow-lg"
+          <div className="flex justify-center gap-6">
+            <AnimatePresence>
+              {currentHobbyPhotos.map((photo) => (
+                <motion.div
+                  key={photo.name}
+                  className="relative w-64 h-40 overflow-hidden rounded-lg shadow-lg cursor-pointer"
+                  onMouseEnter={() => setIsHovered(true)}
+                  onMouseLeave={() => setIsHovered(false)}
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 1.1 }}
-                  transition={{ duration: 1 }}
-                />
-              </AnimatePresence>
-            </div>
-
-            <button 
-              onClick={() => setCurrentIndexHobby((prev) => (prev + 1) % hobbyPhotos.length)} 
-              className="absolute right-0 p-3 bg-gray-800 hover:bg-gray-700 rounded-full transition"
-            >
-              ➡️
-            </button>
+                  transition={{ duration: 0.8 }}
+                >
+                  <motion.img
+                    src={photo.img}
+                    alt={photo.name}
+                    className="w-full h-full object-cover"
+                    whileHover={{ scale: 1.1 }}
+                  />
+                  <div className="absolute bottom-0 bg-black bg-opacity-50 text-white text-center w-full py-1">
+                    {photo.name}
+                  </div>
+                </motion.div>
+              ))}
+            </AnimatePresence>
           </div>
         </div>
 
