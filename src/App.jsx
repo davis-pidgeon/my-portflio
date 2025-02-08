@@ -112,24 +112,32 @@ export default function Portfolio() {
         <div className="mt-12 text-center">
           <h2 className="text-2xl font-semibold mb-6">On the Job</h2>
           <div className="relative w-full flex justify-center items-center">
-            <button onClick={() => setCurrentIndexJob((prev) => (prev - 1 + jobPhotos.length) % jobPhotos.length)} 
-              className="absolute left-0 p-3 bg-gray-800 hover:bg-gray-700 rounded-full transition">
+            <button 
+              onClick={() => setCurrentIndexJob((prev) => (prev - 1 + jobPhotos.length) % jobPhotos.length)} 
+              className="absolute left-0 p-3 bg-gray-800 hover:bg-gray-700 rounded-full transition"
+            >
               ⬅️
             </button>
-            <AnimatePresence>
-              <motion.img
-                key={jobPhotos[currentIndexJob].name}
-                src={jobPhotos[currentIndexJob].img}
-                alt={jobPhotos[currentIndexJob].name}
-                className="rounded-lg shadow-lg w-96 h-auto"
-                initial={{ opacity: 0, x: 30 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -30 }}
-                transition={{ duration: 1 }}
-              />
-            </AnimatePresence>
-            <button onClick={() => setCurrentIndexJob((prev) => (prev + 1) % jobPhotos.length)} 
-              className="absolute right-0 p-3 bg-gray-800 hover:bg-gray-700 rounded-full transition">
+
+            <div className="w-[450px] h-[300px] relative flex justify-center items-center">
+              <AnimatePresence mode="wait">
+                <motion.img
+                  key={jobPhotos[currentIndexJob].name}
+                  src={jobPhotos[currentIndexJob].img}
+                  alt={jobPhotos[currentIndexJob].name}
+                  className="absolute w-full h-full object-cover rounded-lg shadow-lg"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 1.1 }}
+                  transition={{ duration: 1 }}
+                />
+              </AnimatePresence>
+            </div>
+
+            <button 
+              onClick={() => setCurrentIndexJob((prev) => (prev + 1) % jobPhotos.length)} 
+              className="absolute right-0 p-3 bg-gray-800 hover:bg-gray-700 rounded-full transition"
+            >
               ➡️
             </button>
           </div>
@@ -139,24 +147,32 @@ export default function Portfolio() {
         <div className="mt-12 text-center">
           <h2 className="text-2xl font-semibold mb-6">After Hours</h2>
           <div className="relative w-full flex justify-center items-center">
-            <button onClick={() => setCurrentIndexHobby((prev) => (prev - 1 + hobbyPhotos.length) % hobbyPhotos.length)} 
-              className="absolute left-0 p-3 bg-gray-800 hover:bg-gray-700 rounded-full transition">
+            <button 
+              onClick={() => setCurrentIndexHobby((prev) => (prev - 1 + hobbyPhotos.length) % hobbyPhotos.length)} 
+              className="absolute left-0 p-3 bg-gray-800 hover:bg-gray-700 rounded-full transition"
+            >
               ⬅️
             </button>
-            <AnimatePresence>
-              <motion.img
-                key={hobbyPhotos[currentIndexHobby].name}
-                src={hobbyPhotos[currentIndexHobby].img}
-                alt={hobbyPhotos[currentIndexHobby].name}
-                className="rounded-lg shadow-lg w-96 h-auto"
-                initial={{ opacity: 0, x: 30 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -30 }}
-                transition={{ duration: 1 }}
-              />
-            </AnimatePresence>
-            <button onClick={() => setCurrentIndexHobby((prev) => (prev + 1) % hobbyPhotos.length)} 
-              className="absolute right-0 p-3 bg-gray-800 hover:bg-gray-700 rounded-full transition">
+
+            <div className="w-[450px] h-[300px] relative flex justify-center items-center">
+              <AnimatePresence mode="wait">
+                <motion.img
+                  key={hobbyPhotos[currentIndexHobby].name}
+                  src={hobbyPhotos[currentIndexHobby].img}
+                  alt={hobbyPhotos[currentIndexHobby].name}
+                  className="absolute w-full h-full object-cover rounded-lg shadow-lg"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 1.1 }}
+                  transition={{ duration: 1 }}
+                />
+              </AnimatePresence>
+            </div>
+
+            <button 
+              onClick={() => setCurrentIndexHobby((prev) => (prev + 1) % hobbyPhotos.length)} 
+              className="absolute right-0 p-3 bg-gray-800 hover:bg-gray-700 rounded-full transition"
+            >
               ➡️
             </button>
           </div>
