@@ -130,7 +130,7 @@ export default function Portfolio() {
               {currentJobPhotos.map((photo) => (
                 <motion.div
                   key={photo.name}
-                  className="relative w-64 h-40 overflow-hidden rounded-lg shadow-lg cursor-pointer"
+                  className="relative w-95 h-56 overflow-hidden rounded-lg shadow-lg cursor-pointer"
                   onMouseEnter={() => setIsHovered(true)}
                   onMouseLeave={() => setIsHovered(false)}
                   initial={{ opacity: 0, scale: 0.9 }}
@@ -161,7 +161,7 @@ export default function Portfolio() {
               {currentHobbyPhotos.map((photo) => (
                 <motion.div
                   key={photo.name}
-                  className="relative w-64 h-40 overflow-hidden rounded-lg shadow-lg cursor-pointer"
+                  className="relative w-95 h-56 overflow-hidden rounded-lg shadow-lg cursor-pointer"
                   onMouseEnter={() => setIsHovered(true)}
                   onMouseLeave={() => setIsHovered(false)}
                   initial={{ opacity: 0, scale: 0.9 }}
