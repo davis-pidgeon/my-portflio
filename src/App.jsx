@@ -22,26 +22,26 @@ export default function Portfolio() {
     { name: "CSCMP Jedi", img: "https://davis-pidgeon.github.io/my-portfolio/images/on-the-job7.jpeg" }
   ];
 
-  const hobbyPhotos = [
-    { name: "Accadia NP", img: "https://davis-pidgeon.github.io/my-portfolio/images/travel1.jpeg" },
-    { name: "Olympic NP", img: "https://davis-pidgeon.github.io/my-portfolio/images/davis1.jpeg" },
-    { name: "Olympic NP", img: "https://davis-pidgeon.github.io/my-portfolio/images/travel2.jpeg" },
-    { name: "Yosimite NP", img: "https://davis-pidgeon.github.io/my-portfolio/images/travel3.jpeg" },
-    { name: "Joshua Tree NP", img: "https://davis-pidgeon.github.io/my-portfolio/images/travel4.jpeg" },
-    { name: "Rocky Mnt NP", img: "https://davis-pidgeon.github.io/my-portfolio/images/travel5.jpeg" },
-    { name: "Pikes Peak", img: "https://davis-pidgeon.github.io/my-portfolio/images/travel6.jpeg" },
-    { name: "Camping", img: "https://davis-pidgeon.github.io/my-portfolio/images/travel7.jpeg" }
+   const hobbyPhotos = [
+     { name: "Accadia NP", img: "https://davis-pidgeon.github.io/my-portfolio/images/travel1.jpeg" },
+     { name: "Olympic NP", img: "https://davis-pidgeon.github.io/my-portfolio/images/davis1.jpeg" },
+     { name: "Olympic NP", img: "https://davis-pidgeon.github.io/my-portfolio/images/travel2.jpeg" },
+     { name: "Yosemite NP", img: "https://davis-pidgeon.github.io/my-portfolio/images/travel3.jpeg" },
+     { name: "Joshua Tree NP", img: "https://davis-pidgeon.github.io/my-portfolio/images/travel4.jpeg" },
+     { name: "Rocky Mnt NP", img: "https://davis-pidgeon.github.io/my-portfolio/images/travel5.jpeg" },
+     { name: "Pikes Peak", img: "https://davis-pidgeon.github.io/my-portfolio/images/travel6.jpeg" },
+     { name: "Camping", img: "https://davis-pidgeon.github.io/my-portfolio/images/travel7.jpeg" }
   ];
 
-  // Auto-transition every 4 seconds
+  // Auto-transition every 5 seconds
   useEffect(() => {
     const intervalJob = setInterval(() => {
       setCurrentIndexJob((prev) => (prev + 1) % jobPhotos.length);
-    }, 4000);
+    }, 5000);
 
     const intervalHobby = setInterval(() => {
       setCurrentIndexHobby((prev) => (prev + 1) % hobbyPhotos.length);
-    }, 4000);
+    }, 5000);
 
     return () => {
       clearInterval(intervalJob);
@@ -88,8 +88,11 @@ export default function Portfolio() {
           <h2 className="text-2xl font-semibold text-center mb-6">Case Studies & Helpful Links</h2>
           <div className="flex flex-wrap justify-center gap-8">
             {[
-              { name: "Thistle", img: "https://davis-pidgeon.github.io/my-portfolio/images/thistle.jpeg", url: "https://www.porterlogic.com/case-studies/porterlogic-helps-thistle-increase-yield-and-improve-margins" },
+             {[
+               { name: "Thistle", img: "https://davis-pidgeon.github.io/my-portfolio/images/thistle.jpeg", url: "https://www.porterlogic.com/case-studies/porterlogic-helps-thistle-increase-yield-and-improve-margins" },
+               { name: "Thistle", img: "https://davis-pidgeon.github.io/my-portfolio/images/thistle.jpeg", url: "https://www.porterlogic.com/case-studies/porterlogic-helps-thistle-increase-yield-and-improve-margins" },
               { name: "Hungryroot", img: "https://davis-pidgeon.github.io/my-portfolio/images/hungryroot.jpeg", url: "https://www.porterlogic.com/case-studies/how-hungryroot-got-its-time-back-by-automating-replenishment-with-porterlogic" },
+              { name: "Hungryroot", img: "https://davis-pidgeon.github.io/my-portfolio/images/hungryroot.jpeg", url: "https://www.porterlogic.com/case-studies/how-hungryroot-got-its-time-back-by-automating-replenishment-with-porterlogic" }
               { name: "Award", img: "https://davis-pidgeon.github.io/my-portfolio/images/award1.png", url: "https://www.porterlogic.com/news-room/porterlogic-receives-supply-demand-chain-executive-and-food-logistics-2024-top-supply-chain-projects-award" },
               { name: "LinkedIn", img: "https://davis-pidgeon.github.io/my-portfolio/images/linkedin1.png", url: "https://www.linkedin.com/in/davis-pidgeon-79761a114/" },
             ].map((client) => (
@@ -112,20 +115,26 @@ export default function Portfolio() {
         <div className="mt-12 text-center">
           <h2 className="text-2xl font-semibold mb-6">On the Job</h2>
           <div className="relative w-full flex justify-center items-center">
-            <button onClick={() => setCurrentIndexJob((prev) => (prev - 1 + jobPhotos.length) % jobPhotos.length)} className="absolute left-0 p-2 bg-gray-800 rounded-full">⬅️</button>
+            <button onClick={() => setCurrentIndexJob((prev) => (prev - 1 + jobPhotos.length) % jobPhotos.length)} 
+              className="absolute left-0 p-3 bg-gray-800 hover:bg-gray-700 rounded-full transition">
+              ⬅️
+            </button>
             <AnimatePresence>
               <motion.img
                 key={jobPhotos[currentIndexJob].name}
                 src={jobPhotos[currentIndexJob].img}
                 alt={jobPhotos[currentIndexJob].name}
                 className="rounded-lg shadow-lg w-96 h-auto"
-                initial={{ opacity: 0, x: 50 }}
+                initial={{ opacity: 0, x: 30 }}
                 animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -50 }}
-                transition={{ duration: 0.8 }}
+                exit={{ opacity: 0, x: -30 }}
+                transition={{ duration: 1 }}
               />
             </AnimatePresence>
-            <button onClick={() => setCurrentIndexJob((prev) => (prev + 1) % jobPhotos.length)} className="absolute right-0 p-2 bg-gray-800 rounded-full">➡️</button>
+            <button onClick={() => setCurrentIndexJob((prev) => (prev + 1) % jobPhotos.length)} 
+              className="absolute right-0 p-3 bg-gray-800 hover:bg-gray-700 rounded-full transition">
+              ➡️
+            </button>
           </div>
         </div>
 
@@ -133,20 +142,26 @@ export default function Portfolio() {
         <div className="mt-12 text-center">
           <h2 className="text-2xl font-semibold mb-6">After Hours</h2>
           <div className="relative w-full flex justify-center items-center">
-            <button onClick={() => setCurrentIndexHobby((prev) => (prev - 1 + hobbyPhotos.length) % hobbyPhotos.length)} className="absolute left-0 p-2 bg-gray-800 rounded-full">⬅️</button>
+            <button onClick={() => setCurrentIndexHobby((prev) => (prev - 1 + hobbyPhotos.length) % hobbyPhotos.length)} 
+              className="absolute left-0 p-3 bg-gray-800 hover:bg-gray-700 rounded-full transition">
+              ⬅️
+            </button>
             <AnimatePresence>
               <motion.img
                 key={hobbyPhotos[currentIndexHobby].name}
                 src={hobbyPhotos[currentIndexHobby].img}
                 alt={hobbyPhotos[currentIndexHobby].name}
                 className="rounded-lg shadow-lg w-96 h-auto"
-                initial={{ opacity: 0, x: 50 }}
+                initial={{ opacity: 0, x: 30 }}
                 animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -50 }}
-                transition={{ duration: 0.8 }}
+                exit={{ opacity: 0, x: -30 }}
+                transition={{ duration: 1 }}
               />
             </AnimatePresence>
-            <button onClick={() => setCurrentIndexHobby((prev) => (prev + 1) % hobbyPhotos.length)} className="absolute right-0 p-2 bg-gray-800 rounded-full">➡️</button>
+            <button onClick={() => setCurrentIndexHobby((prev) => (prev + 1) % hobbyPhotos.length)} 
+              className="absolute right-0 p-3 bg-gray-800 hover:bg-gray-700 rounded-full transition">
+              ➡️
+            </button>
           </div>
         </div>
 
