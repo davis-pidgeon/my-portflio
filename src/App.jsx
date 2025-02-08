@@ -1,19 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { motion } from "framer-motion";
 
 export default function Portfolio() {
-  const [darkMode, setDarkMode] = useState(() => localStorage.getItem("theme") === "dark");
-
-  // Function to toggle theme
-  const toggleTheme = () => {
-    const newTheme = darkMode ? "light" : "dark";
-    localStorage.setItem("theme", newTheme);
-    document.documentElement.classList.toggle("dark");
-    setDarkMode(!darkMode);
-  };
+  // Always keep in dark mode
+  useEffect(() => {
+    document.documentElement.classList.add("dark");
+  }, []);
 
   return (
-    <div className="min-h-screen bg-white text-black dark:bg-gray-900 dark:text-white">
+    <div className="min-h-screen bg-gray-900 text-white">
       <div className="container mx-auto px-6 py-12">
         
         {/* Profile Section */}
@@ -21,7 +16,7 @@ export default function Portfolio() {
           <motion.img
             src="https://davis-pidgeon.github.io/my-portfolio/images/davis2.jpeg"
             alt="Davis Pidgeon"
-            className="w-40 h-40 rounded-full shadow-lg border-4 border-gray-300 dark:border-gray-700"
+            className="w-40 h-40 rounded-full shadow-lg border-4 border-gray-700"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
@@ -29,20 +24,10 @@ export default function Portfolio() {
           <h1 className="text-4xl font-bold text-center">Davis Pidgeon</h1>
           <p className="text-center text-lg">
             Atlanta, GA |{" "}
-            <a href="mailto:davispidgeon81@gmail.com" className="underline hover:text-blue-500 dark:hover:text-yellow-400 transition">
+            <a href="mailto:davispidgeon81@gmail.com" className="underline hover:text-yellow-400 transition">
               davispidgeon81@gmail.com
             </a>
           </p>
-
-          <motion.button
-            onClick={toggleTheme}
-            className="mt-4 px-6 py-2 rounded-lg text-lg font-semibold transition transform hover:scale-105 shadow-md
-              bg-blue-500 text-white dark:bg-yellow-500 dark:text-black"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            {darkMode ? "Light Mode ☀️" : "Dark Mode 🌙"}
-          </motion.button>
         </div>
 
         {/* Summary Section */}
@@ -51,8 +36,8 @@ export default function Portfolio() {
           <p className="mt-4 text-lg max-w-2xl mx-auto">
             Hi, I'm Davis Pidgeon, a specialist in **system design, implementation, and process optimization**. 
             I have worked extensively on **WMS, MRP, and procurement systems**, helping businesses improve efficiency 
-            and streamline operations. Below, you'll find my **case studies**, **helpful links**, and some snapshots 
-            of my work and travels.
+            and streamline operations. Below, you'll find my **case studies**, **helpful links**, and snapshots 
+            of my work and hobbies.
           </p>
         </div>
 
@@ -71,7 +56,7 @@ export default function Portfolio() {
                 href={client.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-4 bg-white rounded-lg shadow-md hover:shadow-xl dark:bg-gray-800 dark:hover:bg-gray-700 transition-transform transform hover:scale-110"
+                className="p-4 bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition-transform transform hover:scale-110"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -83,23 +68,47 @@ export default function Portfolio() {
 
         {/* Photos Section */}
         <div className="mt-12">
-          <h2 className="text-2xl font-semibold text-center mb-6">Photos</h2>
+          <h2 className="text-2xl font-semibold text-center mb-6">On the Job</h2>
           <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 gap-8"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
+            className="flex space-x-8 overflow-hidden"
+            initial={{ x: "100%" }}
+            animate={{ x: "-100%" }}
+            transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
           >
             {[
-              { name: "Travel", img: "https://davis-pidgeon.github.io/my-portfolio/images/travel1.jpeg" },
-              { name: "Client Visit", img: "https://davis-pidgeon.github.io/my-portfolio/images/client-visit.jpeg" }
+              { name: "Client Visit", img: "https://davis-pidgeon.github.io/my-portfolio/images/client-visit.jpeg" },
+              { name: "Warehouse Work", img: "https://davis-pidgeon.github.io/my-portfolio/images/on-the-job1.jpeg" },
+              { name: "Warehouse Work", img: "https://davis-pidgeon.github.io/my-portfolio/images/on-the-job2.jpeg" },
+              { name: "Warehouse Work", img: "https://davis-pidgeon.github.io/my-portfolio/images/on-the-job3.jpeg" }
             ].map((item) => (
               <motion.img
                 key={item.name}
                 src={item.img}
                 alt={item.name}
-                className="rounded-lg shadow-lg hover:scale-105 transition-transform duration-300"
-                whileHover={{ scale: 1.05 }}
+                className="rounded-lg shadow-lg w-64 h-auto"
+              />
+            ))}
+          </motion.div>
+        </div>
+
+        <div className="mt-12">
+          <h2 className="text-2xl font-semibold text-center mb-6">After Hours</h2>
+          <motion.div
+            className="flex space-x-8 overflow-hidden"
+            initial={{ x: "100%" }}
+            animate={{ x: "-100%" }}
+            transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
+          >
+            {[
+              { name: "Hiking", img: "https://davis-pidgeon.github.io/my-portfolio/images/travel1.jpeg" },
+              { name: "Camping", img: "https://davis-pidgeon.github.io/my-portfolio/images/davis1.jpeg" },
+              { name: "Volunteering", img: "https://davis-pidgeon.github.io/my-portfolio/images/travel1.jpeg" }
+            ].map((item) => (
+              <motion.img
+                key={item.name}
+                src={item.img}
+                alt={item.name}
+                className="rounded-lg shadow-lg w-64 h-auto"
               />
             ))}
           </motion.div>
