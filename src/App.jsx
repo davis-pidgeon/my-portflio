@@ -87,7 +87,6 @@ export default function Portfolio() {
         <div className="mt-12">
           <h2 className="text-2xl font-semibold text-center mb-6">Case Studies & Helpful Links</h2>
           <div className="flex flex-wrap justify-center gap-8">
-            {[
              {[
                { name: "Thistle", img: "https://davis-pidgeon.github.io/my-portfolio/images/thistle.jpeg", url: "https://www.porterlogic.com/case-studies/porterlogic-helps-thistle-increase-yield-and-improve-margins" },
                { name: "Thistle", img: "https://davis-pidgeon.github.io/my-portfolio/images/thistle.jpeg", url: "https://www.porterlogic.com/case-studies/porterlogic-helps-thistle-increase-yield-and-improve-margins" },
