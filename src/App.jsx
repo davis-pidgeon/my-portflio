@@ -39,24 +39,20 @@ useEffect(() => {
     let newPhoto;
     do {
       newPhoto = photoArray[Math.floor(Math.random() * photoArray.length)];
-    } while (currentPhotos.includes(newPhoto)); // Ensure it's not a duplicate
+    } while (currentPhotos.includes(newPhoto)); // Ensure it's not a duplicate in the same set
     return newPhoto;
   };
 
   // Initial state for displayed images
   const [currentJobPhotos, setCurrentJobPhotos] = useState([
-    getRandomImage(jobPhotos, []),
-    getRandomImage(jobPhotos, []),
-    getRandomImage(jobPhotos, [])
+    jobPhotos[0], jobPhotos[1], jobPhotos[2]
   ]);
 
   const [currentHobbyPhotos, setCurrentHobbyPhotos] = useState([
-    getRandomImage(hobbyPhotos, []),
-    getRandomImage(hobbyPhotos, []),
-    getRandomImage(hobbyPhotos, [])
+    hobbyPhotos[0], hobbyPhotos[1], hobbyPhotos[2]
   ]);
 
-  // Define random transition effects
+  // Define transition effects
   const transitionEffects = [
     { opacity: [0, 1], scale: [0.8, 1] }, // Fade & Scale
     { x: [-50, 0], opacity: [0, 1] }, // Slide Left
@@ -64,23 +60,25 @@ useEffect(() => {
     { y: [-50, 0], opacity: [0, 1] } // Slide Down
   ];
 
-  // Function to change one image randomly
+  // Function to change ONE image at a time smoothly
   const updateImage = (setPhotos, photoArray) => {
-    setPhotos((prevPhotos) => {
-      const randomIndex = Math.floor(Math.random() * 3); // Pick one of the 3 slots to change
-      const newPhoto = getRandomImage(photoArray, prevPhotos);
-      const updatedPhotos = [...prevPhotos];
-      updatedPhotos[randomIndex] = newPhoto;
-      return updatedPhotos;
-    });
+    setTimeout(() => {
+      setPhotos((prevPhotos) => {
+        const randomIndex = Math.floor(Math.random() * 3); // Pick 1 of the 3 slots to change
+        const newPhoto = getRandomImage(photoArray, prevPhotos);
+        const updatedPhotos = [...prevPhotos];
+        updatedPhotos[randomIndex] = newPhoto;
+        return updatedPhotos;
+      });
+    }, Math.random() * 4000 + 3000); // Transition every 3-7 seconds randomly
   };
 
-  // Start interval for random transitions
+  // Start interval for smooth transitions
   useEffect(() => {
     const interval = setInterval(() => {
       updateImage(setCurrentJobPhotos, jobPhotos);
       updateImage(setCurrentHobbyPhotos, hobbyPhotos);
-    }, 1000); // Change one photo every second
+    }, 3000); // Slower pace (one image changes every 3-7s)
 
     return () => clearInterval(interval);
   }, []);
@@ -150,17 +148,16 @@ useEffect(() => {
           <h2 className="text-2xl font-semibold mb-6 text-[#0077b6]">On the Job</h2>
           <div className="flex justify-center gap-6">
             {currentJobPhotos.map((photo, index) => (
-              <AnimatePresence key={photo.name}>
-                <motion.div
-                  className="relative w-[500px] h-[300px] overflow-hidden rounded-lg shadow-lg cursor-pointer"
-                  initial={transitionEffects[index % transitionEffects.length]}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.8 }}
-                  transition={{ duration: 0.8 }}
-                >
-                  <motion.img src={photo.img} alt={photo.name} className="w-full h-full object-cover" />
-                </motion.div>
-              </AnimatePresence>
+              <motion.div
+                key={photo.name}
+                className="relative w-[500px] h-[300px] overflow-hidden rounded-lg shadow-lg cursor-pointer bg-white border-2 border-[#c2a77d]"
+                initial={transitionEffects[index % transitionEffects.length]}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.8 }}
+                transition={{ duration: 1.5 }}
+              >
+                <motion.img src={photo.img} alt={photo.name} className="w-full h-full object-cover" />
+              </motion.div>
             ))}
           </div>
         </div>
@@ -170,17 +167,16 @@ useEffect(() => {
           <h2 className="text-2xl font-semibold mb-6 text-[#0077b6]">After Hours</h2>
           <div className="flex justify-center gap-6">
             {currentHobbyPhotos.map((photo, index) => (
-              <AnimatePresence key={photo.name}>
-                <motion.div
-                  className="relative w-[500px] h-[300px] overflow-hidden rounded-lg shadow-lg cursor-pointer"
-                  initial={transitionEffects[index % transitionEffects.length]}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.8 }}
-                  transition={{ duration: 0.8 }}
-                >
-                  <motion.img src={photo.img} alt={photo.name} className="w-full h-full object-cover" />
-                </motion.div>
-              </AnimatePresence>
+              <motion.div
+                key={photo.name}
+                className="relative w-[500px] h-[300px] overflow-hidden rounded-lg shadow-lg cursor-pointer bg-white border-2 border-[#c2a77d]"
+                initial={transitionEffects[index % transitionEffects.length]}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.8 }}
+                transition={{ duration: 1.5 }}
+              >
+                <motion.img src={photo.img} alt={photo.name} className="w-full h-full object-cover" />
+              </motion.div>
             ))}
           </div>
         </div>
