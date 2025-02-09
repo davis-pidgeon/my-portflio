@@ -34,12 +34,12 @@ useEffect(() => {
      { name: "Camping", img: "https://davis-pidgeon.github.io/my-portfolio/images/travel7.jpeg" }
   ];
 
-  // Helper function to get a new random image
+// Function to get a unique random image
   const getRandomImage = (photoArray, currentPhotos) => {
     let newPhoto;
     do {
       newPhoto = photoArray[Math.floor(Math.random() * photoArray.length)];
-    } while (currentPhotos.includes(newPhoto)); // Ensure it's not a duplicate in the same set
+    } while (currentPhotos.includes(newPhoto));
     return newPhoto;
   };
 
@@ -52,36 +52,28 @@ useEffect(() => {
     hobbyPhotos[0], hobbyPhotos[1], hobbyPhotos[2]
   ]);
 
-  // Define transition effects
-  const transitionEffects = [
-    { opacity: [0, 1], scale: [0.8, 1] }, // Fade & Scale
-    { x: [-50, 0], opacity: [0, 1] }, // Slide Left
-    { x: [50, 0], opacity: [0, 1] }, // Slide Right
-    { y: [-50, 0], opacity: [0, 1] } // Slide Down
-  ];
-
-  // Function to change ONE image at a time smoothly
+  // Update one image at a time smoothly
   const updateImage = (setPhotos, photoArray) => {
     setTimeout(() => {
       setPhotos((prevPhotos) => {
-        const randomIndex = Math.floor(Math.random() * 3); // Pick 1 of the 3 slots to change
+        const randomIndex = Math.floor(Math.random() * 3); // Pick a random slot
         const newPhoto = getRandomImage(photoArray, prevPhotos);
         const updatedPhotos = [...prevPhotos];
         updatedPhotos[randomIndex] = newPhoto;
         return updatedPhotos;
       });
-    }, Math.random() * 4000 + 3000); // Transition every 3-7 seconds randomly
+    }, Math.random() * 6000 + 4000); // Transition every 4-10 seconds randomly
   };
 
-  // Start interval for smooth transitions
   useEffect(() => {
     const interval = setInterval(() => {
       updateImage(setCurrentJobPhotos, jobPhotos);
       updateImage(setCurrentHobbyPhotos, hobbyPhotos);
-    }, 3000); // Slower pace (one image changes every 3-7s)
+    }, 4000); // One image changes every 4s
 
     return () => clearInterval(interval);
   }, []);
+
 
   return (
     <div className="min-h-screen bg-[#f9f8f6] text-[#2d3748]">
@@ -150,10 +142,10 @@ useEffect(() => {
             {currentJobPhotos.map((photo, index) => (
               <motion.div
                 key={photo.name}
-                className="relative w-[500px] h-[300px] overflow-hidden rounded-lg shadow-lg cursor-pointer bg-white border-2 border-[#c2a77d]"
-                initial={transitionEffects[index % transitionEffects.length]}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.8 }}
+                className="relative w-[500px] h-[300px] overflow-hidden rounded-lg shadow-lg bg-white border-2 border-[#c2a77d]"
+                initial={{ x: 100, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                exit={{ x: -100, opacity: 0 }}
                 transition={{ duration: 1.5 }}
               >
                 <motion.img src={photo.img} alt={photo.name} className="w-full h-full object-cover" />
@@ -169,10 +161,10 @@ useEffect(() => {
             {currentHobbyPhotos.map((photo, index) => (
               <motion.div
                 key={photo.name}
-                className="relative w-[500px] h-[300px] overflow-hidden rounded-lg shadow-lg cursor-pointer bg-white border-2 border-[#c2a77d]"
-                initial={transitionEffects[index % transitionEffects.length]}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.8 }}
+                className="relative w-[500px] h-[300px] overflow-hidden rounded-lg shadow-lg bg-white border-2 border-[#c2a77d]"
+                initial={{ x: -100, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                exit={{ x: 100, opacity: 0 }}
                 transition={{ duration: 1.5 }}
               >
                 <motion.img src={photo.img} alt={photo.name} className="w-full h-full object-cover" />
