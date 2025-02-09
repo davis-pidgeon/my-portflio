@@ -148,7 +148,7 @@ useEffect(() => {
             {currentJobPhotos.map((photo, index) => (
               <motion.div
                 key={photo.name}
-                className="relative w-[500px] h-[300px] overflow-hidden rounded-lg shadow-lg bg-[#C08457] border-2 border-[#A76D47]"
+                className={'relative ${imageSize} overflow-hidden rounded-lg shadow-lg bg-[#C08457] border-2 border-[#A76D47]'}
                 initial={{ x: 100, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 exit={{ x: -100, opacity: 0 }}
