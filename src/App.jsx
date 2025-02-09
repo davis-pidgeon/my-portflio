@@ -15,7 +15,7 @@ useEffect(() => {
 
   const isMobile = useDeviceType(); // ✅ Detect if the user is on mobile
 
-  const imageSize = isMobile ? "w-[300px] h-[200px]" : "w-[500px] h-[300px]";
+  const imageSize = isMobile ? "w-[400px] h-[250px]" : "w-[400px] h-[250px]";
 
   const jobPhotos = [
     { name: "Client Visit with PPE", img: "https://davis-pidgeon.github.io/my-portfolio/images/client-visit.jpeg" },
@@ -107,10 +107,10 @@ useEffect(() => {
         <div className="text-center mt-10">
           <h2 className="text-3xl font-semibold">Welcome to My Portfolio</h2>
           <p className="mt-4 text-lg max-w-2xl mx-auto">
-            Hi, I'm Davis Pidgeon, I have been designing, building, testing, implementing and supporting supply chain software for the last
-            5 years. I've learned from my time in an established supply chain company, using logic and design proven over the years. I have 
-            also experienced the challenge of building that logic for the first time yourself as the first Solution Engineer at a start up.
-            I have always love challenging problems with great people and I seek to continue the joy of finding solutions!
+            Hello, and welcome! I'm Davis Pidgeon and I have been designing, building, testing, implementing and supporting supply chain software for the last
+            5 years. I've learned from my time in an established supply chain software company, using logic and design proven over the years. I have 
+            also experienced the challenge of building that logic for the first time yourself as the first Solution Engineer at a start up!
+            I have always loved challenging problems with great people and I seek to continue the joy of finding solutions!
             Below, you'll find my case studies, helpful links, and snapshots of my work and hobbies.
           </p>
         </div>
