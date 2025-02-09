@@ -34,7 +34,7 @@ useEffect(() => {
      { name: "Camping", img: "https://davis-pidgeon.github.io/my-portfolio/images/travel7.jpeg" }
   ];
 
-  // Function to get a unique random image
+// Function to get a unique random image
   const getRandomImage = (photoArray, currentPhotos) => {
     let newPhoto;
     do {
@@ -43,19 +43,18 @@ useEffect(() => {
     return newPhoto;
   };
 
-  // Initial state for displayed images
+  // State for displayed images
   const [currentJobPhotos, setCurrentJobPhotos] = useState([
     jobPhotos[0], jobPhotos[1], jobPhotos[2]
   ]);
-
   const [currentHobbyPhotos, setCurrentHobbyPhotos] = useState([
     hobbyPhotos[0], hobbyPhotos[1], hobbyPhotos[2]
   ]);
 
-  // Transition direction: Left (-100) or Right (100)
+  // Transition direction (Left -100 or Right 100)
   const [direction, setDirection] = useState(100);
 
-  // Update one image at a time smoothly
+  // Update images smoothly
   const updateImage = (setPhotos, photoArray) => {
     setTimeout(() => {
       setPhotos((prevPhotos) => {
@@ -66,14 +65,14 @@ useEffect(() => {
         setDirection(Math.random() > 0.5 ? 100 : -100); // Randomize swipe direction
         return updatedPhotos;
       });
-    }, Math.random() * 6000 + 4000); // Transition every 4-10 seconds randomly
+    }, Math.random() * 6000 + 4000); // Random transition every 4-10 sec
   };
 
   useEffect(() => {
     const interval = setInterval(() => {
       updateImage(setCurrentJobPhotos, jobPhotos);
       updateImage(setCurrentHobbyPhotos, hobbyPhotos);
-    }, 4000); // One image changes every 4s
+    }, 4000);
 
     return () => clearInterval(interval);
   }, []);
@@ -143,48 +142,52 @@ useEffect(() => {
         {/* Job Photos Section */}
         <div className="mt-12 text-center">
           <h2 className="text-2xl font-semibold mb-6 text-[#0077b6]">On the Job</h2>
-          <div className="flex justify-center gap-6">
-            {currentJobPhotos.map((photo, index) => (
-              <motion.div
-                key={photo.name}
-                className="relative w-[500px] h-[300px] overflow-hidden rounded-lg shadow-lg bg-white border-2 border-[#c2a77d]"
-              >
-                <motion.img
-                  key={photo.img}
-                  src={photo.img}
-                  alt={photo.name}
-                  className="w-full h-full object-cover"
-                  initial={{ x: direction, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  exit={{ x: -direction, opacity: 0 }}
-                  transition={{ duration: 1.5, ease: "easeInOut" }}
-                />
-              </motion.div>
-            ))}
+          <div className="flex justify-center gap-6 relative">
+            <AnimatePresence>
+              {currentJobPhotos.map((photo, index) => (
+                <motion.div
+                  key={photo.name}
+                  className="relative w-[500px] h-[300px] overflow-hidden rounded-lg shadow-lg bg-white border-2 border-[#c2a77d]"
+                >
+                  <motion.img
+                    key={photo.img}
+                    src={photo.img}
+                    alt={photo.name}
+                    className="absolute w-full h-full object-cover"
+                    initial={{ x: direction, opacity: 1 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    exit={{ x: -direction, opacity: 1 }}
+                    transition={{ duration: 1.5, ease: "easeInOut" }}
+                  />
+                </motion.div>
+              ))}
+            </AnimatePresence>
           </div>
         </div>
 
         {/* Hobby Photos Section */}
         <div className="mt-12 text-center">
           <h2 className="text-2xl font-semibold mb-6 text-[#0077b6]">After Hours</h2>
-          <div className="flex justify-center gap-6">
-            {currentHobbyPhotos.map((photo, index) => (
-              <motion.div
-                key={photo.name}
-                className="relative w-[500px] h-[300px] overflow-hidden rounded-lg shadow-lg bg-white border-2 border-[#c2a77d]"
-              >
-                <motion.img
-                  key={photo.img}
-                  src={photo.img}
-                  alt={photo.name}
-                  className="w-full h-full object-cover"
-                  initial={{ x: -direction, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  exit={{ x: direction, opacity: 0 }}
-                  transition={{ duration: 1.5, ease: "easeInOut" }}
-                />
-              </motion.div>
-            ))}
+          <div className="flex justify-center gap-6 relative">
+            <AnimatePresence>
+              {currentHobbyPhotos.map((photo, index) => (
+                <motion.div
+                  key={photo.name}
+                  className="relative w-[500px] h-[300px] overflow-hidden rounded-lg shadow-lg bg-white border-2 border-[#c2a77d]"
+                >
+                  <motion.img
+                    key={photo.img}
+                    src={photo.img}
+                    alt={photo.name}
+                    className="absolute w-full h-full object-cover"
+                    initial={{ x: -direction, opacity: 1 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    exit={{ x: direction, opacity: 1 }}
+                    transition={{ duration: 1.5, ease: "easeInOut" }}
+                  />
+                </motion.div>
+              ))}
+            </AnimatePresence>
           </div>
         </div>
 
