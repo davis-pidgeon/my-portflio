@@ -3,9 +3,10 @@ import { motion, AnimatePresence } from "framer-motion";
 
 export default function Portfolio() {
   // Always keep in dark mode
-  useEffect(() => {
-    document.documentElement.classList.add("bg-[#f9f8f6] text-[#2d3748]");
-  }, []);
+useEffect(() => {
+  document.documentElement.classList.add("bg-[#f9f8f6]");
+  document.documentElement.classList.add("text-[#2d3748]");
+}, []);
 
   // Slideshow logic
   const [currentIndexJob, setCurrentIndexJob] = useState(0);
