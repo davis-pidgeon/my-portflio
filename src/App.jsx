@@ -34,41 +34,42 @@ useEffect(() => {
      { name: "Camping", img: "https://davis-pidgeon.github.io/my-portfolio/images/travel7.jpeg" }
   ];
 
-  // Function to get a unique random image that doesn't repeat immediately
-  const getRandomImage = (photoArray, currentPhoto) => {
+  // Function to get a unique random image
+  const getRandomImage = (photoArray, currentPhotos) => {
     let newPhoto;
     do {
       newPhoto = photoArray[Math.floor(Math.random() * photoArray.length)];
-    } while (newPhoto === currentPhoto);
+    } while (currentPhotos.includes(newPhoto));
     return newPhoto;
   };
 
-  // State for displayed images
+  // Initial state for displayed images
   const [currentJobPhotos, setCurrentJobPhotos] = useState([
     jobPhotos[0], jobPhotos[1], jobPhotos[2]
   ]);
+
   const [currentHobbyPhotos, setCurrentHobbyPhotos] = useState([
     hobbyPhotos[0], hobbyPhotos[1], hobbyPhotos[2]
   ]);
 
-  // Image transitions timing
+  // Update one image at a time smoothly
+  const updateImage = (setPhotos, photoArray) => {
+    setTimeout(() => {
+      setPhotos((prevPhotos) => {
+        const randomIndex = Math.floor(Math.random() * 3); // Pick a random slot
+        const newPhoto = getRandomImage(photoArray, prevPhotos);
+        const updatedPhotos = [...prevPhotos];
+        updatedPhotos[randomIndex] = newPhoto;
+        return updatedPhotos;
+      });
+    }, Math.random() * 6000 + 4000); // Transition every 4-10 seconds randomly
+  };
+
   useEffect(() => {
     const interval = setInterval(() => {
-      const randomIndex = Math.floor(Math.random() * 3); // Pick a random slot
-      setCurrentJobPhotos((prev) => {
-        const newPhoto = getRandomImage(jobPhotos, prev[randomIndex]);
-        const updatedPhotos = [...prev];
-        updatedPhotos[randomIndex] = newPhoto;
-        return updatedPhotos;
-      });
-
-      setCurrentHobbyPhotos((prev) => {
-        const newPhoto = getRandomImage(hobbyPhotos, prev[randomIndex]);
-        const updatedPhotos = [...prev];
-        updatedPhotos[randomIndex] = newPhoto;
-        return updatedPhotos;
-      });
-    }, 5000); // Change one image every 5 sec
+      updateImage(setCurrentJobPhotos, jobPhotos);
+      updateImage(setCurrentHobbyPhotos, hobbyPhotos);
+    }, 4000); // One image changes every 4s
 
     return () => clearInterval(interval);
   }, []);
@@ -138,22 +139,17 @@ useEffect(() => {
         {/* Job Photos Section */}
         <div className="mt-12 text-center">
           <h2 className="text-2xl font-semibold mb-6 text-[#0077b6]">On the Job</h2>
-          <div className="flex justify-center gap-6 relative">
-            {currentJobPhotos.map((photo) => (
+          <div className="flex justify-center gap-6">
+            {currentJobPhotos.map((photo, index) => (
               <motion.div
                 key={photo.name}
                 className="relative w-[500px] h-[300px] overflow-hidden rounded-lg shadow-lg bg-white border-2 border-[#c2a77d]"
+                initial={{ x: 100, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                exit={{ x: -100, opacity: 0 }}
+                transition={{ duration: 1.5 }}
               >
-                <motion.img
-                  key={photo.img}
-                  src={photo.img}
-                  alt={photo.name}
-                  className="absolute w-full h-full object-cover"
-                  initial={{ x: "100%" }}
-                  animate={{ x: "0%" }}
-                  exit={{ x: "-100%" }}
-                  transition={{ duration: 1.5, ease: "easeInOut" }}
-                />
+                <motion.img src={photo.img} alt={photo.name} className="w-full h-full object-cover" />
               </motion.div>
             ))}
           </div>
@@ -162,22 +158,17 @@ useEffect(() => {
         {/* Hobby Photos Section */}
         <div className="mt-12 text-center">
           <h2 className="text-2xl font-semibold mb-6 text-[#0077b6]">After Hours</h2>
-          <div className="flex justify-center gap-6 relative">
-            {currentHobbyPhotos.map((photo) => (
+          <div className="flex justify-center gap-6">
+            {currentHobbyPhotos.map((photo, index) => (
               <motion.div
                 key={photo.name}
                 className="relative w-[500px] h-[300px] overflow-hidden rounded-lg shadow-lg bg-white border-2 border-[#c2a77d]"
+                initial={{ x: -100, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                exit={{ x: 100, opacity: 0 }}
+                transition={{ duration: 1.5 }}
               >
-                <motion.img
-                  key={photo.img}
-                  src={photo.img}
-                  alt={photo.name}
-                  className="absolute w-full h-full object-cover"
-                  initial={{ x: "-100%" }}
-                  animate={{ x: "0%" }}
-                  exit={{ x: "100%" }}
-                  transition={{ duration: 1.5, ease: "easeInOut" }}
-                />
+                <motion.img src={photo.img} alt={photo.name} className="w-full h-full object-cover" />
               </motion.div>
             ))}
           </div>
