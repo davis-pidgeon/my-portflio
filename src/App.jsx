@@ -34,12 +34,12 @@ useEffect(() => {
      { name: "Camping", img: "https://davis-pidgeon.github.io/my-portfolio/images/travel7.jpeg" }
   ];
 
-// Function to get a unique random image
-  const getRandomImage = (photoArray, currentPhotos) => {
+  // Function to get a unique random image that doesn't repeat immediately
+  const getRandomImage = (photoArray, currentPhoto) => {
     let newPhoto;
     do {
       newPhoto = photoArray[Math.floor(Math.random() * photoArray.length)];
-    } while (currentPhotos.includes(newPhoto));
+    } while (newPhoto === currentPhoto);
     return newPhoto;
   };
 
@@ -51,28 +51,24 @@ useEffect(() => {
     hobbyPhotos[0], hobbyPhotos[1], hobbyPhotos[2]
   ]);
 
-  // Transition direction (Left -100 or Right 100)
-  const [direction, setDirection] = useState(100);
-
-  // Update images smoothly
-  const updateImage = (setPhotos, photoArray) => {
-    setTimeout(() => {
-      setPhotos((prevPhotos) => {
-        const randomIndex = Math.floor(Math.random() * 3); // Pick a random slot
-        const newPhoto = getRandomImage(photoArray, prevPhotos);
-        const updatedPhotos = [...prevPhotos];
-        updatedPhotos[randomIndex] = newPhoto;
-        setDirection(Math.random() > 0.5 ? 100 : -100); // Randomize swipe direction
-        return updatedPhotos;
-      });
-    }, Math.random() * 6000 + 4000); // Random transition every 4-10 sec
-  };
-
+  // Image transitions timing
   useEffect(() => {
     const interval = setInterval(() => {
-      updateImage(setCurrentJobPhotos, jobPhotos);
-      updateImage(setCurrentHobbyPhotos, hobbyPhotos);
-    }, 4000);
+      const randomIndex = Math.floor(Math.random() * 3); // Pick a random slot
+      setCurrentJobPhotos((prev) => {
+        const newPhoto = getRandomImage(jobPhotos, prev[randomIndex]);
+        const updatedPhotos = [...prev];
+        updatedPhotos[randomIndex] = newPhoto;
+        return updatedPhotos;
+      });
+
+      setCurrentHobbyPhotos((prev) => {
+        const newPhoto = getRandomImage(hobbyPhotos, prev[randomIndex]);
+        const updatedPhotos = [...prev];
+        updatedPhotos[randomIndex] = newPhoto;
+        return updatedPhotos;
+      });
+    }, 5000); // Change one image every 5 sec
 
     return () => clearInterval(interval);
   }, []);
@@ -143,25 +139,23 @@ useEffect(() => {
         <div className="mt-12 text-center">
           <h2 className="text-2xl font-semibold mb-6 text-[#0077b6]">On the Job</h2>
           <div className="flex justify-center gap-6 relative">
-            <AnimatePresence>
-              {currentJobPhotos.map((photo, index) => (
-                <motion.div
-                  key={photo.name}
-                  className="relative w-[500px] h-[300px] overflow-hidden rounded-lg shadow-lg bg-white border-2 border-[#c2a77d]"
-                >
-                  <motion.img
-                    key={photo.img}
-                    src={photo.img}
-                    alt={photo.name}
-                    className="absolute w-full h-full object-cover"
-                    initial={{ x: direction, opacity: 1 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    exit={{ x: -direction, opacity: 1 }}
-                    transition={{ duration: 1.5, ease: "easeInOut" }}
-                  />
-                </motion.div>
-              ))}
-            </AnimatePresence>
+            {currentJobPhotos.map((photo) => (
+              <motion.div
+                key={photo.name}
+                className="relative w-[500px] h-[300px] overflow-hidden rounded-lg shadow-lg bg-white border-2 border-[#c2a77d]"
+              >
+                <motion.img
+                  key={photo.img}
+                  src={photo.img}
+                  alt={photo.name}
+                  className="absolute w-full h-full object-cover"
+                  initial={{ x: "100%" }}
+                  animate={{ x: "0%" }}
+                  exit={{ x: "-100%" }}
+                  transition={{ duration: 1.5, ease: "easeInOut" }}
+                />
+              </motion.div>
+            ))}
           </div>
         </div>
 
@@ -169,25 +163,23 @@ useEffect(() => {
         <div className="mt-12 text-center">
           <h2 className="text-2xl font-semibold mb-6 text-[#0077b6]">After Hours</h2>
           <div className="flex justify-center gap-6 relative">
-            <AnimatePresence>
-              {currentHobbyPhotos.map((photo, index) => (
-                <motion.div
-                  key={photo.name}
-                  className="relative w-[500px] h-[300px] overflow-hidden rounded-lg shadow-lg bg-white border-2 border-[#c2a77d]"
-                >
-                  <motion.img
-                    key={photo.img}
-                    src={photo.img}
-                    alt={photo.name}
-                    className="absolute w-full h-full object-cover"
-                    initial={{ x: -direction, opacity: 1 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    exit={{ x: direction, opacity: 1 }}
-                    transition={{ duration: 1.5, ease: "easeInOut" }}
-                  />
-                </motion.div>
-              ))}
-            </AnimatePresence>
+            {currentHobbyPhotos.map((photo) => (
+              <motion.div
+                key={photo.name}
+                className="relative w-[500px] h-[300px] overflow-hidden rounded-lg shadow-lg bg-white border-2 border-[#c2a77d]"
+              >
+                <motion.img
+                  key={photo.img}
+                  src={photo.img}
+                  alt={photo.name}
+                  className="absolute w-full h-full object-cover"
+                  initial={{ x: "-100%" }}
+                  animate={{ x: "0%" }}
+                  exit={{ x: "100%" }}
+                  transition={{ duration: 1.5, ease: "easeInOut" }}
+                />
+              </motion.div>
+            ))}
           </div>
         </div>
 
