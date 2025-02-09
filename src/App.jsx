@@ -76,7 +76,7 @@ useEffect(() => {
 
 
   return (
-    <div className="min-h-screen bg-[#f9f8f6] text-[#2d3748]">
+    <div className="min-h-screen bg-[#F0E9DF] text-[#2d3748]">
       <div className="container mx-auto px-6 py-12">
         
         {/* Profile Section */}
