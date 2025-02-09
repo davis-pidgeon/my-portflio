@@ -15,7 +15,7 @@ useEffect(() => {
 
   const isMobile = useDeviceType(); // ✅ Detect if the user is on mobile
 
-  const imageSize = isMobile ? "w-[400px] h-[250px]" : "w-[400px] h-[250px]";
+  const imageSize = isMobile ? "w-[300px] h-[200px]" : "w-[500px] h-[300px]";
 
   const jobPhotos = [
     { name: "Client Visit with PPE", img: "https://davis-pidgeon.github.io/my-portfolio/images/client-visit.jpeg" },
@@ -148,7 +148,7 @@ useEffect(() => {
             {currentJobPhotos.map((photo, index) => (
               <motion.div
                 key={photo.name}
-                className={'relative w-[400px] h-[250px] overflow-hidden rounded-lg shadow-lg bg-[#C08457] border-2 border-[#A76D47]'}
+                className={'relative ${imageSize}  overflow-hidden rounded-lg shadow-lg bg-[#C08457] border-2 border-[#A76D47]'}
                 initial={{ x: 100, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 exit={{ x: -100, opacity: 0 }}
@@ -167,7 +167,7 @@ useEffect(() => {
             {currentHobbyPhotos.map((photo, index) => (
               <motion.div
                 key={photo.name}
-                className={'relative w-[400px] h-[250px] overflow-hidden rounded-lg shadow-lg bg-[#C08457] border-2 border-[#A76D47]'}
+                className={'relative ${imageSize}  overflow-hidden rounded-lg shadow-lg bg-[#C08457] border-2 border-[#A76D47]'}
                 initial={{ x: -100, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 exit={{ x: 100, opacity: 0 }}
