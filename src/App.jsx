@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import useDeviceType from "./useDeviceType"; // ✅ Import the hook
 
 export default function Portfolio() {
   // Always keep in dark mode
@@ -11,6 +12,10 @@ useEffect(() => {
   // Slideshow logic
   const [currentIndexJob, setCurrentIndexJob] = useState(0);
   const [currentIndexHobby, setCurrentIndexHobby] = useState(0);
+
+  const isMobile = useDeviceType(); // ✅ Detect if the user is on mobile
+
+  const imageSize = isMobile ? "w-[300px] h-[200px]" : "w-[500px] h-[300px]";
 
   const jobPhotos = [
     { name: "Client Visit with PPE", img: "https://davis-pidgeon.github.io/my-portfolio/images/client-visit.jpeg" },
@@ -162,7 +167,7 @@ useEffect(() => {
             {currentHobbyPhotos.map((photo, index) => (
               <motion.div
                 key={photo.name}
-                className="relative w-[500px] h-[300px] overflow-hidden rounded-lg shadow-lg bg-[#C08457] border-2 border-[#A76D47]"
+                className={'relative ${imageSize} overflow-hidden rounded-lg shadow-lg bg-[#C08457] border-2 border-[#A76D47]'}
                 initial={{ x: -100, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 exit={{ x: 100, opacity: 0 }}
