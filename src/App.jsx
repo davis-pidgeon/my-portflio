@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 export default function Portfolio() {
   // Always keep in dark mode
 useEffect(() => {
-  document.documentElement.classList.add("bg-[#F4EDE4]");
+  document.documentElement.classList.add("bg-[#EADDC8]");
   document.documentElement.classList.add("text-[#2D3748]");
 }, []);
 
@@ -76,7 +76,7 @@ useEffect(() => {
 
 
   return (
-    <div className="min-h-screen bg-[#F4EDE4] text-[#2D3748]">
+    <div className="min-h-screen bg-[#EADDC8] text-[#2D3748]">
       <div className="container mx-auto px-6 py-12">
         
         {/* Profile Section */}
@@ -84,12 +84,12 @@ useEffect(() => {
           <motion.img
             src="https://davis-pidgeon.github.io/my-portfolio/images/davis2.jpeg"
             alt="Davis Pidgeon"
-            className="w-40 h-40 rounded-full shadow-lg border-4 border-[#C08457]"
+            className="w-40 h-40 rounded-full shadow-lg border-4 border-[#A76D47]"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
           />
-          <h1 className="text-4xl font-bold text-center text-[#568EA3]">Davis Pidgeon</h1>
+          <h1 className="text-4xl font-bold text-center text-[#8C6A5D]">Davis Pidgeon</h1>
           <p className="text-center text-lg">
             Atlanta, GA |{" "}
             <a href="mailto:davispidgeon81@gmail.com" className="underline text-[#568EA3] hover:text-[#2D3748] transition">
@@ -112,7 +112,7 @@ useEffect(() => {
 
         {/* Case Studies & Helpful Links Section */}
         <div className="mt-12">
-          <h2 className="text-2xl font-semibold text-center mb-6 text-[#568EA3]">Case Studies & Helpful Links</h2>
+          <h2 className="text-2xl font-semibold text-center mb-6 text-[#8C6A5D]">Case Studies & Helpful Links</h2>
           <div className="flex flex-wrap justify-center gap-8">
              {[
                { name: "Thistle", img: "https://davis-pidgeon.github.io/my-portfolio/images/thistle.jpeg", url: "https://www.porterlogic.com/case-studies/porterlogic-helps-thistle-increase-yield-and-improve-margins" },
@@ -125,7 +125,7 @@ useEffect(() => {
                 href={client.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-4 bg-[#F4EDE4] rounded-lg shadow-md hover:shadow-xl transition-transform transform hover:scale-110"
+                className="p-4 bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition-transform transform hover:scale-110"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -138,12 +138,12 @@ useEffect(() => {
 
         {/* Job Photos Section */}
         <div className="mt-12 text-center">
-          <h2 className="text-2xl font-semibold mb-6 text-[#568EA3]">On the Job</h2>
+          <h2 className="text-2xl font-semibold mb-6 text-[#8C6A5D]">On the Job</h2>
           <div className="flex justify-center gap-6">
             {currentJobPhotos.map((photo, index) => (
               <motion.div
                 key={photo.name}
-                className="relative w-[500px] h-[300px] overflow-hidden rounded-lg shadow-lg bg-[#C08457] border-2 border-[#C08457]"
+                className="relative w-[500px] h-[300px] overflow-hidden rounded-lg shadow-lg bg-[#C08457] border-2 border-[#A76D47]"
                 initial={{ x: 100, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 exit={{ x: -100, opacity: 0 }}
@@ -157,12 +157,12 @@ useEffect(() => {
 
         {/* Hobby Photos Section */}
         <div className="mt-12 text-center">
-          <h2 className="text-2xl font-semibold mb-6 text-[#568EA3]">After Hours</h2>
+          <h2 className="text-2xl font-semibold mb-6 text-[#8C6A5D]">After Hours</h2>
           <div className="flex justify-center gap-6">
             {currentHobbyPhotos.map((photo, index) => (
               <motion.div
                 key={photo.name}
-                className="relative w-[500px] h-[300px] overflow-hidden rounded-lg shadow-lg bg-[#C08457] border-2 border-[#C08457]"
+                className="relative w-[500px] h-[300px] overflow-hidden rounded-lg shadow-lg bg-[#C08457] border-2 border-[#A76D47]"
                 initial={{ x: -100, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 exit={{ x: 100, opacity: 0 }}
