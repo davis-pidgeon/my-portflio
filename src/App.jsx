@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 export default function Portfolio() {
   // Always keep in dark mode
   useEffect(() => {
-    document.documentElement.classList.add("dark");
+    document.documentElement.classList.add("bg-[#f9f8f6] text-[#2d3748]");
   }, []);
 
   // Slideshow logic
@@ -33,34 +33,56 @@ export default function Portfolio() {
      { name: "Camping", img: "https://davis-pidgeon.github.io/my-portfolio/images/travel7.jpeg" }
   ];
 
-    // Function to get random 3 photos (ensuring no back-to-back repeats)
-  const getRandomPhotos = (photoArray, currentPhotos) => {
-    let newPhotos = [];
-    while (newPhotos.length < 3) {
-      let randomPhoto = photoArray[Math.floor(Math.random() * photoArray.length)];
-      if (!newPhotos.includes(randomPhoto) && !currentPhotos.includes(randomPhoto)) {
-        newPhotos.push(randomPhoto);
-      }
-    }
-    return newPhotos;
+  // Helper function to get a new random image
+  const getRandomImage = (photoArray, currentPhotos) => {
+    let newPhoto;
+    do {
+      newPhoto = photoArray[Math.floor(Math.random() * photoArray.length)];
+    } while (currentPhotos.includes(newPhoto)); // Ensure it's not a duplicate
+    return newPhoto;
   };
 
-    // States for both sections
-  const [currentJobPhotos, setCurrentJobPhotos] = useState(getRandomPhotos(jobPhotos, []));
-  const [currentHobbyPhotos, setCurrentHobbyPhotos] = useState(getRandomPhotos(hobbyPhotos, []));
-  const [isHovered, setIsHovered] = useState(false);
+  // Initial state for displayed images
+  const [currentJobPhotos, setCurrentJobPhotos] = useState([
+    getRandomImage(jobPhotos, []),
+    getRandomImage(jobPhotos, []),
+    getRandomImage(jobPhotos, [])
+  ]);
 
-  // Auto-transition every 5 seconds unless hovering
+  const [currentHobbyPhotos, setCurrentHobbyPhotos] = useState([
+    getRandomImage(hobbyPhotos, []),
+    getRandomImage(hobbyPhotos, []),
+    getRandomImage(hobbyPhotos, [])
+  ]);
+
+  // Define random transition effects
+  const transitionEffects = [
+    { opacity: [0, 1], scale: [0.8, 1] }, // Fade & Scale
+    { x: [-50, 0], opacity: [0, 1] }, // Slide Left
+    { x: [50, 0], opacity: [0, 1] }, // Slide Right
+    { y: [-50, 0], opacity: [0, 1] } // Slide Down
+  ];
+
+  // Function to change one image randomly
+  const updateImage = (setPhotos, photoArray) => {
+    setPhotos((prevPhotos) => {
+      const randomIndex = Math.floor(Math.random() * 3); // Pick one of the 3 slots to change
+      const newPhoto = getRandomImage(photoArray, prevPhotos);
+      const updatedPhotos = [...prevPhotos];
+      updatedPhotos[randomIndex] = newPhoto;
+      return updatedPhotos;
+    });
+  };
+
+  // Start interval for random transitions
   useEffect(() => {
-    if (!isHovered) {
-      const interval = setInterval(() => {
-        setCurrentJobPhotos((prev) => getRandomPhotos(jobPhotos, prev));
-        setCurrentHobbyPhotos((prev) => getRandomPhotos(hobbyPhotos, prev));
-      }, 5000);
+    const interval = setInterval(() => {
+      updateImage(setCurrentJobPhotos, jobPhotos);
+      updateImage(setCurrentHobbyPhotos, hobbyPhotos);
+    }, 1000); // Change one photo every second
 
-      return () => clearInterval(interval);
-    }
-  }, [isHovered]);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="min-h-screen bg-[#f9f8f6] text-[#2d3748]">
@@ -126,30 +148,19 @@ export default function Portfolio() {
         <div className="mt-12 text-center">
           <h2 className="text-2xl font-semibold mb-6 text-[#0077b6]">On the Job</h2>
           <div className="flex justify-center gap-6">
-            <AnimatePresence>
-              {currentJobPhotos.map((photo) => (
+            {currentJobPhotos.map((photo, index) => (
+              <AnimatePresence key={photo.name}>
                 <motion.div
-                  key={photo.name}
-                  className="relative w-[500px] h-[300px] overflow-hidden rounded-lg shadow-lg cursor-pointer bg-white border-2 border-[#c2a77d]"
-                  onMouseEnter={() => setIsHovered(true)}
-                  onMouseLeave={() => setIsHovered(false)}
-                  initial={{ opacity: 0, scale: 0.9 }}
+                  className="relative w-[500px] h-[300px] overflow-hidden rounded-lg shadow-lg cursor-pointer"
+                  initial={transitionEffects[index % transitionEffects.length]}
                   animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.9 }}
-                  transition={{ duration: 0.6 }}
+                  exit={{ opacity: 0, scale: 0.8 }}
+                  transition={{ duration: 0.8 }}
                 >
-                  <motion.img
-                    src={photo.img}
-                    alt={photo.name}
-                    className="w-full h-full object-cover"
-                    whileHover={{ scale: 1.05 }}
-                  />
-                  <div className="absolute bottom-0 bg-[#c2a77d] bg-opacity-50 text-white text-center w-full py-2 text-lg">
-                    {photo.name}
-                  </div>
+                  <motion.img src={photo.img} alt={photo.name} className="w-full h-full object-cover" />
                 </motion.div>
-              ))}
-            </AnimatePresence>
+              </AnimatePresence>
+            ))}
           </div>
         </div>
 
@@ -157,30 +168,19 @@ export default function Portfolio() {
         <div className="mt-12 text-center">
           <h2 className="text-2xl font-semibold mb-6 text-[#0077b6]">After Hours</h2>
           <div className="flex justify-center gap-6">
-            <AnimatePresence>
-              {currentHobbyPhotos.map((photo) => (
+            {currentHobbyPhotos.map((photo, index) => (
+              <AnimatePresence key={photo.name}>
                 <motion.div
-                  key={photo.name}
-                  className="relative w-[500px] h-[300px] overflow-hidden rounded-lg shadow-lg cursor-pointer bg-white border-2 border-[#c2a77d]"
-                  onMouseEnter={() => setIsHovered(true)}
-                  onMouseLeave={() => setIsHovered(false)}
-                  initial={{ opacity: 0, scale: 0.9 }}
+                  className="relative w-[500px] h-[300px] overflow-hidden rounded-lg shadow-lg cursor-pointer"
+                  initial={transitionEffects[index % transitionEffects.length]}
                   animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 1.1 }}
+                  exit={{ opacity: 0, scale: 0.8 }}
                   transition={{ duration: 0.8 }}
                 >
-                  <motion.img
-                    src={photo.img}
-                    alt={photo.name}
-                    className="w-full h-full object-cover"
-                    whileHover={{ scale: 1.1 }}
-                  />
-                  <div className="absolute bottom-0 bg-[#c2a77d] bg-opacity-50 text-white text-center w-full py-2 text-lg">
-                    {photo.name}
-                  </div>
+                  <motion.img src={photo.img} alt={photo.name} className="w-full h-full object-cover" />
                 </motion.div>
-              ))}
-            </AnimatePresence>
+              </AnimatePresence>
+            ))}
           </div>
         </div>
 
