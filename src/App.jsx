@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 export default function Portfolio() {
   // Always keep in dark mode
 useEffect(() => {
-  document.documentElement.classList.add("bg-[#f9f8f6]");
+  document.documentElement.classList.add("bg-[#F0E9DF]");
   document.documentElement.classList.add("text-[#2d3748]");
 }, []);
 
@@ -84,7 +84,7 @@ useEffect(() => {
           <motion.img
             src="https://davis-pidgeon.github.io/my-portfolio/images/davis2.jpeg"
             alt="Davis Pidgeon"
-            className="w-40 h-40 rounded-full shadow-lg border-4 border-[#c2a77d]"
+            className="w-40 h-40 rounded-full shadow-lg border-4 border-[#000000]"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
@@ -143,7 +143,7 @@ useEffect(() => {
             {currentJobPhotos.map((photo, index) => (
               <motion.div
                 key={photo.name}
-                className="relative w-[500px] h-[300px] overflow-hidden rounded-lg shadow-lg bg-white border-2 border-[#c2a77d]"
+                className="relative w-[500px] h-[300px] overflow-hidden rounded-lg shadow-lg bg-white border-2 border-[#000000]"
                 initial={{ x: 100, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 exit={{ x: -100, opacity: 0 }}
@@ -162,7 +162,7 @@ useEffect(() => {
             {currentHobbyPhotos.map((photo, index) => (
               <motion.div
                 key={photo.name}
-                className="relative w-[500px] h-[300px] overflow-hidden rounded-lg shadow-lg bg-white border-2 border-[#c2a77d]"
+                className="relative w-[500px] h-[300px] overflow-hidden rounded-lg shadow-lg bg-white border-2 border-[#000000]"
                 initial={{ x: -100, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 exit={{ x: 100, opacity: 0 }}
