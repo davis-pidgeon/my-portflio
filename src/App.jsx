@@ -62,7 +62,7 @@ useEffect(() => {
         updatedPhotos[randomIndex] = newPhoto;
         return updatedPhotos;
       });
-    }, Math.random() * 6000 + 4000); // Transition every 4-10 seconds randomly
+    }, 5000); // Transition every 4-10 seconds randomly
   };
 
   useEffect(() => {
@@ -147,7 +147,7 @@ useEffect(() => {
                 initial={{ x: 100, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 exit={{ x: -100, opacity: 0 }}
-                transition={{ duration: 1.5 }}
+                transition={{ duration: 2.5 }}
               >
                 <motion.img src={photo.img} alt={photo.name} className="w-full h-full object-cover" />
               </motion.div>
@@ -166,7 +166,7 @@ useEffect(() => {
                 initial={{ x: -100, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 exit={{ x: 100, opacity: 0 }}
-                transition={{ duration: 1.5 }}
+                transition={{ duration: 2.5 }}
               >
                 <motion.img src={photo.img} alt={photo.name} className="w-full h-full object-cover" />
               </motion.div>
