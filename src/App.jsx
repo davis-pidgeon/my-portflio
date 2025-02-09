@@ -34,7 +34,7 @@ useEffect(() => {
      { name: "Camping", img: "https://davis-pidgeon.github.io/my-portfolio/images/travel7.jpeg" }
   ];
 
-// Function to get a unique random image
+  // Function to get a unique random image
   const getRandomImage = (photoArray, currentPhotos) => {
     let newPhoto;
     do {
@@ -52,6 +52,9 @@ useEffect(() => {
     hobbyPhotos[0], hobbyPhotos[1], hobbyPhotos[2]
   ]);
 
+  // Transition direction: Left (-100) or Right (100)
+  const [direction, setDirection] = useState(100);
+
   // Update one image at a time smoothly
   const updateImage = (setPhotos, photoArray) => {
     setTimeout(() => {
@@ -60,6 +63,7 @@ useEffect(() => {
         const newPhoto = getRandomImage(photoArray, prevPhotos);
         const updatedPhotos = [...prevPhotos];
         updatedPhotos[randomIndex] = newPhoto;
+        setDirection(Math.random() > 0.5 ? 100 : -100); // Randomize swipe direction
         return updatedPhotos;
       });
     }, Math.random() * 6000 + 4000); // Transition every 4-10 seconds randomly
@@ -102,10 +106,11 @@ useEffect(() => {
         <div className="text-center mt-10">
           <h2 className="text-3xl font-semibold">Welcome to My Portfolio</h2>
           <p className="mt-4 text-lg max-w-2xl mx-auto">
-            Hi, I'm Davis Pidgeon, a specialist in **system design, implementation, and process optimization**. 
-            I have worked extensively on **WMS, MRP, and procurement systems**, helping businesses improve efficiency 
-            and streamline operations. Below, you'll find my **case studies**, **helpful links**, and snapshots 
-            of my work and hobbies.
+            Hi, I'm Davis Pidgeon, I have been designing, building, testing, implementing and supporting supply chain software for the last
+            5 years. I've learned from my time in an established supply chain company, using logic and design proven over the years. I have 
+            also experienced the challenge of building that logic for the first time yourself as the first Solution Engineer at a start up.
+            I have always love challenging problems with great people and I seek to continue the joy of finding solutions!
+            Below, you'll find my case studies, helpful links, and snapshots of my work and hobbies.
           </p>
         </div>
 
@@ -143,12 +148,17 @@ useEffect(() => {
               <motion.div
                 key={photo.name}
                 className="relative w-[500px] h-[300px] overflow-hidden rounded-lg shadow-lg bg-white border-2 border-[#c2a77d]"
-                initial={{ x: 100, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                exit={{ x: -100, opacity: 0 }}
-                transition={{ duration: 1.5 }}
               >
-                <motion.img src={photo.img} alt={photo.name} className="w-full h-full object-cover" />
+                <motion.img
+                  key={photo.img}
+                  src={photo.img}
+                  alt={photo.name}
+                  className="w-full h-full object-cover"
+                  initial={{ x: direction, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  exit={{ x: -direction, opacity: 0 }}
+                  transition={{ duration: 1.5, ease: "easeInOut" }}
+                />
               </motion.div>
             ))}
           </div>
@@ -162,12 +172,17 @@ useEffect(() => {
               <motion.div
                 key={photo.name}
                 className="relative w-[500px] h-[300px] overflow-hidden rounded-lg shadow-lg bg-white border-2 border-[#c2a77d]"
-                initial={{ x: -100, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                exit={{ x: 100, opacity: 0 }}
-                transition={{ duration: 1.5 }}
               >
-                <motion.img src={photo.img} alt={photo.name} className="w-full h-full object-cover" />
+                <motion.img
+                  key={photo.img}
+                  src={photo.img}
+                  alt={photo.name}
+                  className="w-full h-full object-cover"
+                  initial={{ x: -direction, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  exit={{ x: direction, opacity: 0 }}
+                  transition={{ duration: 1.5, ease: "easeInOut" }}
+                />
               </motion.div>
             ))}
           </div>
@@ -177,3 +192,4 @@ useEffect(() => {
     </div>
   );
 }
+
