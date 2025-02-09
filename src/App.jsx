@@ -110,7 +110,7 @@ useEffect(() => {
             Hello, and welcome! I'm Davis Pidgeon and I have been designing, building, testing, implementing and supporting supply chain software for the last
             5 years. I've learned from my time in an established supply chain software company, using logic and design proven over the years. I have 
             also experienced the challenge of building that logic for the first time yourself as the first Solution Engineer at a start up!
-            I have always loved challenging problems with great people and I seek to continue the joy of finding solutions!
+            I always love facing challenging problems with great people and I seek to continue the joy of finding solutions!
             Below, you'll find my case studies, helpful links, and snapshots of my work and hobbies.
           </p>
         </div>
@@ -148,7 +148,7 @@ useEffect(() => {
             {currentJobPhotos.map((photo, index) => (
               <motion.div
                 key={photo.name}
-                className={'relative ${imageSize} overflow-hidden rounded-lg shadow-lg bg-[#C08457] border-2 border-[#A76D47]'}
+                className={'relative w-[400px] h-[250px] overflow-hidden rounded-lg shadow-lg bg-[#C08457] border-2 border-[#A76D47]'}
                 initial={{ x: 100, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 exit={{ x: -100, opacity: 0 }}
@@ -167,7 +167,7 @@ useEffect(() => {
             {currentHobbyPhotos.map((photo, index) => (
               <motion.div
                 key={photo.name}
-                className={'relative ${imageSize} overflow-hidden rounded-lg shadow-lg bg-[#C08457] border-2 border-[#A76D47]'}
+                className={'relative w-[400px] h-[250px] overflow-hidden rounded-lg shadow-lg bg-[#C08457] border-2 border-[#A76D47]'}
                 initial={{ x: -100, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 exit={{ x: 100, opacity: 0 }}
