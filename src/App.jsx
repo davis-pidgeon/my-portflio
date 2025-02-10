@@ -92,7 +92,7 @@ useEffect(() => {
     const interval = setInterval(() => {
       updateImage(setCurrentJobPhotos, jobPhotos);
       updateImage(setCurrentHobbyPhotos, hobbyPhotos);
-    }, 4000);
+    }, 8000);
 
     return () => clearInterval(interval);
   }, []);
