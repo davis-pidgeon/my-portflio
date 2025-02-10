@@ -68,7 +68,6 @@ useEffect(() => {
   };
 
   const updateImage = (setPhotos, photoArray) => {
-    setTimeout(() => {
       setPhotos((prevPhotos) => {
         const availablePhotos = photoArray.filter((photo) => !hoveredPhotos.has(photo.name));
         if (availablePhotos.length === 0) return prevPhotos;
@@ -87,7 +86,6 @@ useEffect(() => {
         updatedPhotos[randomIndex] = newPhoto;
         return updatedPhotos;
       });
-    }, 5000);
   };
 
   useEffect(() => {
@@ -174,7 +172,7 @@ useEffect(() => {
                 initial={{ x: 100, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 exit={{ x: -100, opacity: 0 }}
-                transition={{ duration: 2.5 }}
+                transition={{ duration: 1.5 }}
                 onMouseEnter={() => handleMouseEnter(photo.name)}
                 onMouseLeave={() => handleMouseLeave(photo.name)}
               >
