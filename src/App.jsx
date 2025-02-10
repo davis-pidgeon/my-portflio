@@ -70,9 +70,21 @@ useEffect(() => {
         const availablePhotos = photoArray.filter((photo) => !hoveredPhotos.has(photo.name));
         if (availablePhotos.length === 0) return prevPhotos;
 
-        const randomIndex = Math.floor(Math.random() * prevPhotos.length);
+        // Find a slot that is NOT hovered
+        let randomIndex;
+        let attempts = 0;
+        do {
+          randomIndex = Math.floor(Math.random() * prevPhotos.length);
+          attempts++;
+        } while (
+          hoveredPhotosRef.current.has(prevPhotos[randomIndex].name) &&
+          attempts < 10
+        );
+
+        // Get a new image for that slot
         const newPhoto = getRandomImage(availablePhotos, prevPhotos);
 
+        // Replace the selected slot with the new image
         const updatedPhotos = [...prevPhotos];
         updatedPhotos[randomIndex] = newPhoto;
         return updatedPhotos;
