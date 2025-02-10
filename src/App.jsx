@@ -17,6 +17,9 @@ useEffect(() => {
 
   const imageSize = isMobile ? "w-[300px] h-[200px]" : "w-[500px] h-[300px]";
 
+    // Track hovered images using useRef
+  const hoveredPhotosRef = useRef(new Set());
+
   const jobPhotos = [
     { name: "Client Visit with PPE", img: "https://davis-pidgeon.github.io/my-portfolio/images/client-visit.jpeg" },
     { name: "Full Circle Moment!", img: "https://davis-pidgeon.github.io/my-portfolio/images/on-the-job1.jpeg" },
