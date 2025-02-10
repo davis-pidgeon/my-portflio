@@ -148,7 +148,8 @@ useEffect(() => {
             {currentJobPhotos.map((photo, index) => (
               <motion.div
                 key={photo.name}
-                className={'relative ${imageSize}  overflow-hidden rounded-lg shadow-lg bg-[#C08457] border-2 border-[#A76D47]'}
+                className={'relative ${imageSize}  overflow-hidden rounded-lg shadow-lg hover:shadow-xl bg-[#C08457] border-2 border-[#A76D47] hover:scale-110'}
+                whileHover={{ scale: 1.1 }}
                 initial={{ x: 100, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 exit={{ x: -100, opacity: 0 }}
@@ -167,7 +168,8 @@ useEffect(() => {
             {currentHobbyPhotos.map((photo, index) => (
               <motion.div
                 key={photo.name}
-                className={'relative ${imageSize}  overflow-hidden rounded-lg shadow-lg bg-[#C08457] border-2 border-[#A76D47]'}
+                className={'relative ${imageSize}  overflow-hidden rounded-lg shadow-lg hover:shadow-xl bg-[#C08457] border-2 border-[#A76D47] hover:scale-110'}
+                whileHover={{ scale: 1.1 }}
                 initial={{ x: -100, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 exit={{ x: 100, opacity: 0 }}
