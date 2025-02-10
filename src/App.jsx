@@ -18,7 +18,7 @@ useEffect(() => {
   const imageSize = isMobile ? "w-[300px] h-[200px]" : "w-[500px] h-[300px]";
 
     // Track hovered images using useRef
-  const hoveredPhotosRef = useRef(new Set());
+  const hoveredPhotosRef = useState(new Set());
 
   const jobPhotos = [
     { name: "Client Visit with PPE", img: "https://davis-pidgeon.github.io/my-portfolio/images/client-visit.jpeg" },
@@ -48,7 +48,7 @@ useEffect(() => {
   const [currentHobbyPhotos, setCurrentHobbyPhotos] = useState([hobbyPhotos[0], hobbyPhotos[1], hobbyPhotos[2]]);
 
   const handleMouseEnter = (photoName) => {
-    setHoveredPhotos((prev) => new Set([...prev, photoName]));
+    setHoveredPhotos((prev) => new Set(prev).add(photoName));
   };
 
   const handleMouseLeave = (photoName) => {
@@ -75,14 +75,9 @@ useEffect(() => {
 
         // Find a slot that is NOT hovered
         let randomIndex;
-        let attempts = 0;
         do {
           randomIndex = Math.floor(Math.random() * prevPhotos.length);
-          attempts++;
-        } while (
-          hoveredPhotosRef.current.has(prevPhotos[randomIndex].name) &&
-          attempts < 10
-        );
+        } while (hoveredPhotos.has(prevPhotos[randomIndex].name));
 
         // Get a new image for that slot
         const newPhoto = getRandomImage(availablePhotos, prevPhotos);
