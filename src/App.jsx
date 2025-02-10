@@ -117,7 +117,7 @@ useEffect(() => {
           />
           <h1 className="text-4xl font-bold text-center text-[#568EA3]">Davis Pidgeon</h1>
           <p className="text-center text-lg">
-            Atlanta, GA |{" "}
+            Atlanta, GA | 404.538.0196 |{" "}
             <a href="mailto:davispidgeon81@gmail.com" className="underline text-[#568EA3] hover:text-[#2D3748] transition">
               davispidgeon81@gmail.com
             </a>
@@ -129,8 +129,8 @@ useEffect(() => {
           <h2 className="text-3xl font-semibold">Welcome to My Portfolio</h2>
           <p className="mt-4 text-lg max-w-2xl mx-auto">
             Hello, and welcome! I'm Davis Pidgeon and I have been designing, building, testing, implementing, and supporting supply chain software for the last
-            5 years. Starting out at an established supply chain software company, I bulit on and learned from logic and design that has been proven and used for over 30 years. 
-            I have also experienced the challenge of building that logic for the first time yourself as the first Solution Engineer at a start up!
+            5 years. Starting out at an established supply chain software company, I built on and learned from logic and design that has been proven and used for over 30 years. 
+            Currently, I am learning from the challenge of building that logic for the first time myself as the first Solution Engineer at a start up.
             I always love facing challenging problems with great people and I seek to continue the joy of finding solutions.
             Below, you'll find my case studies, helpful links, and snapshots of my work and hobbies.
           </p>
