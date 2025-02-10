@@ -39,7 +39,23 @@ useEffect(() => {
      { name: "Camping", img: "https://davis-pidgeon.github.io/my-portfolio/images/travel7.jpeg" }
   ];
 
-  // Function to get a unique random image
+  
+ const [hoveredPhotos, setHoveredPhotos] = useState(new Set());
+  const [currentJobPhotos, setCurrentJobPhotos] = useState([jobPhotos[0], jobPhotos[1], jobPhotos[2]]);
+  const [currentHobbyPhotos, setCurrentHobbyPhotos] = useState([hobbyPhotos[0], hobbyPhotos[1], hobbyPhotos[2]]);
+
+  const handleMouseEnter = (photoName) => {
+    setHoveredPhotos((prev) => new Set([...prev, photoName]));
+  };
+
+  const handleMouseLeave = (photoName) => {
+    setHoveredPhotos((prev) => {
+      const newSet = new Set(prev);
+      newSet.delete(photoName);
+      return newSet;
+    });
+  };
+
   const getRandomImage = (photoArray, currentPhotos) => {
     let newPhoto;
     do {
@@ -48,36 +64,31 @@ useEffect(() => {
     return newPhoto;
   };
 
-  // Initial state for displayed images
-  const [currentJobPhotos, setCurrentJobPhotos] = useState([
-    jobPhotos[0], jobPhotos[1], jobPhotos[2]
-  ]);
-
-  const [currentHobbyPhotos, setCurrentHobbyPhotos] = useState([
-    hobbyPhotos[0], hobbyPhotos[1], hobbyPhotos[2]
-  ]);
-
-  // Update one image at a time smoothly
   const updateImage = (setPhotos, photoArray) => {
     setTimeout(() => {
       setPhotos((prevPhotos) => {
-        const randomIndex = Math.floor(Math.random() * 3); // Pick a random slot
-        const newPhoto = getRandomImage(photoArray, prevPhotos);
+        const availablePhotos = photoArray.filter((photo) => !hoveredPhotos.has(photo.name));
+        if (availablePhotos.length === 0) return prevPhotos;
+
+        const randomIndex = Math.floor(Math.random() * prevPhotos.length);
+        const newPhoto = getRandomImage(availablePhotos, prevPhotos);
+
         const updatedPhotos = [...prevPhotos];
         updatedPhotos[randomIndex] = newPhoto;
         return updatedPhotos;
       });
-    }, 5000); // Transition every 4-10 seconds randomly
+    }, 5000);
   };
 
   useEffect(() => {
     const interval = setInterval(() => {
       updateImage(setCurrentJobPhotos, jobPhotos);
       updateImage(setCurrentHobbyPhotos, hobbyPhotos);
-    }, 4000); // One image changes every 4s
+    }, 4000);
 
     return () => clearInterval(interval);
   }, []);
+
 
 
   return (
@@ -154,8 +165,13 @@ useEffect(() => {
                 animate={{ x: 0, opacity: 1 }}
                 exit={{ x: -100, opacity: 0 }}
                 transition={{ duration: 2.5 }}
+                onMouseEnter={() => handleMouseEnter(photo.name)}
+                onMouseLeave={() => handleMouseLeave(photo.name)}
               >
                 <motion.img src={photo.img} alt={photo.name} className="w-full h-full object-cover" />
+                <motion.div className="absolute inset-0 flex items-center justify-center bg-[#A76D47]/80 text-white text-lg font-semibold opacity-0 hover:opacity-100 transition-opacity">
+                  {photo.name}
+                </motion.div>
               </motion.div>
             ))}
           </div>
@@ -173,9 +189,14 @@ useEffect(() => {
                 initial={{ x: -100, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 exit={{ x: 100, opacity: 0 }}
-                transition={{ duration: 2.5 }}
+                transition={{ duration: 1.5 }}
+                onMouseEnter={() => handleMouseEnter(photo.name)}
+                onMouseLeave={() => handleMouseLeave(photo.name)}
               >
                 <motion.img src={photo.img} alt={photo.name} className="w-full h-full object-cover" />
+                <motion.div className="absolute inset-0 flex items-center justify-center bg-[#A76D47]/80 text-white text-lg font-semibold opacity-0 hover:opacity-100 transition-opacity">
+                  {photo.name}
+                </motion.div>
               </motion.div>
             ))}
           </div>
