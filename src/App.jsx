@@ -9,6 +9,21 @@ useEffect(() => {
   document.documentElement.classList.add("text-[#2D3748]");
 }, []);
 
+  const sectionVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 1 } },
+  };
+
+  const photoVariantsjob = {
+    hidden: { opacity: 0, x: 50 },
+    visible: { opacity: 1, x: 0, transition: { duration: 1 } },
+  };
+
+  const photoVariantshob = {
+    hidden: { opacity: 0, x: -50 },
+    visible: { opacity: 1, x: 0, transition: { duration: 1 } },
+  };
+
   // Slideshow logic
   const [currentIndexJob, setCurrentIndexJob] = useState(0);
   const [currentIndexHobby, setCurrentIndexHobby] = useState(0);
@@ -127,19 +142,31 @@ useEffect(() => {
         {/* Summary Section */}
         <div className="text-center mt-10">
           <h2 className="text-3xl font-semibold">Welcome to My Portfolio</h2>
-          <p className="mt-4 text-lg max-w-2xl mx-auto">
+          <motion.p
+            variants={sectionVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="mt-4 text-lg max-w-2xl mx-auto"
+          >
             Hello, and welcome! I'm Davis Pidgeon and I have been designing, building, testing, implementing, and supporting supply chain software for the last
             5 years. Starting out at an established supply chain software company, I built on and learned from logic and design that has been proven and used for over 30 years. 
             Currently, I am learning from the challenge of building that logic for the first time myself as the first Solution Engineer at a start up.
             I always love facing challenging problems with great people and I seek to continue the joy of finding solutions.
             Below, you'll find my case studies, helpful links, and snapshots of my work and hobbies.
-          </p>
+          </motion.p>
         </div>
 
         {/* Case Studies & Helpful Links Section */}
         <div className="mt-12">
           <h2 className="text-2xl font-semibold text-center mb-6 text-[#568EA3]">Case Studies & Helpful Links</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <motion.div
+            variants={sectionVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+          >
             {[{
               name: "Warehouse Optimization",
               description: "Developed a WMS system that identified over $500K in annual savings by optimizing warehouse operations. Click to learn more!",
@@ -178,51 +205,86 @@ useEffect(() => {
                 </motion.div>
               </motion.a>
             ))}
-          </div>
+          </motion.div>
         </div>
 
          {/* Functional Experience Section */}
         <div className="mt-16">
           <h2 className="text-2xl font-semibold text-center mb-6 text-[#568EA3]">Functional Experience</h2>
-          <div className="flex flex-wrap justify-center gap-3">
+          <motion.div
+            variants={sectionVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="flex flex-wrap justify-center gap-3"
+          >
             {["Design", "Configurations", "Wiring Mod Scripts", "SQL & Database Management", "Extension Development & Implementation", "Creating Test Scripts", "Testing Extensions", "Go Live Testing & Support", "Issue Troubleshooting & Resolution", "Performing Code Changes", "Writing SQL Views and Editing Stored Procedures", "Translating Client Needs to Internal Development Teams", "Solution Demos", "Client Meetings & Relationship Management", "Mentoring Junior Consultants", "Delivering SQL Training Classes"].map((item) => (
               <div key={item} className={tagStyles}>{item}</div>
             ))}
-          </div>
+          </motion.div>
         </div>
 
         {/* Software Proficiency Section */}
         <div className="mt-16">
           <h2 className="text-2xl font-semibold text-center mb-6 text-[#568EA3]">Software Proficiency</h2>
-          <div className="flex flex-wrap justify-center gap-3">
+          <motion.div
+            variants={sectionVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="flex flex-wrap justify-center gap-3"
+          >
             {["Manhattan WMoS", "PorterLogic", "SQL & Database Management", "VS Code", "Oracle", "Postgres", "Postman", "ChatGPT", "Jira", "Putty", "Excel", "VBA", "XML", "Python", "JavaScript", "MS Access", "Notepad++", "FileZilla", "GraphQL", "TCP Test Tool", "Vocollect", "FlexSim", "AutoCAD"].map((item) => (
               <div key={item} className={tagStyles}>{item}</div>
             ))}
-          </div>
+          </motion.div>
         </div>
 
         {/* Key Personal Strengths Section */}
         <div className="mt-16 mb-12">
           <h2 className="text-2xl font-semibold text-center mb-6 text-[#568EA3]">Key Personal Strengths</h2>
-          <div className="flex flex-wrap justify-center gap-3">
+          <motion.div
+            variants={sectionVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="flex flex-wrap justify-center gap-3"
+          >
             {["Problem Solving", "Critical Thinking", "Handling Ambiguity", "Taking Initiative", "Leadership", "Adding Value", "Time Management", "Multi-tasking", "Communication", "Strong Work Ethic"].map((item) => (
               <div key={item} className={tagStyles}>{item}</div>
             ))}
-          </div>
+          </motion.div>
         </div>
 
         {/* Contact Section */}
         <div className="mt-12 text-center">
           <h2 className="text-2xl font-semibold text-[#568EA3]">Let’s Connect</h2>
-          <p className="mt-2 text-lg">Interested in discussing how I can help your team? Let’s talk!</p>
-          <a href="mailto:davispidgeon81@gmail.com" className="mt-4 inline-block px-6 py-2 bg-[#A76D47] text-white rounded-full shadow-md hover:shadow-lg">Contact Me</a>
+          <motion.p
+            variants={sectionVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="mt-2 text-lg">Interested in discussing how I can help your team? Let’s talk!</motion.p>
+          <motion.a
+            variants={sectionVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }} 
+            href="mailto:davispidgeon81@gmail.com" 
+            className="mt-4 inline-block px-6 py-2 bg-[#A76D47] text-white rounded-full shadow-md hover:shadow-lg">Contact Me</motion.a>
         </div>
 
 
         {/* Job Photos Section */}
         <div className="mt-12 text-center">
           <h2 className="text-2xl font-semibold mb-6 text-[#568EA3]">On the Job</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <motion.div
+            variants={photoVariantsjob}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid grid-cols-1 md:grid-cols-3 gap-6"
+          >
             {currentJobPhotos.map((photo, index) => (
               <motion.div
                 key={photo.name}
@@ -241,13 +303,19 @@ useEffect(() => {
                 </motion.div>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
 
         {/* Hobby Photos Section */}
         <div className="mt-12 text-center">
           <h2 className="text-2xl font-semibold mb-6 text-[#568EA3]">After Hours</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <motion.div
+            variants={photoVariantshob}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid grid-cols-1 md:grid-cols-3 gap-6"
+          >
             {currentHobbyPhotos.map((photo, index) => (
               <motion.div
                 key={photo.name}
@@ -266,7 +334,7 @@ useEffect(() => {
                 </motion.div>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
 
       </div>
