@@ -88,7 +88,7 @@ const profileImageVariants = {
 
   const imageSize = isMobile ? "w-[300px] h-[200px]" : "w-[500px] h-[300px]";
 
-  const tagStyles = "bg-[#5A5A5A] text-white px-4 py-2 rounded-lg text-sm font-medium shadow-md text-center flex items-center justify-center";
+  const tagStyles = `bg-[#5A5A5A] text-white ${isMobile ? 'px-4 py-2 rounded-xl text-sm font-medium shadow-md text-center flex items-center justify-center' : 'px-6 py-3 rounded-xl text-base font-medium shadow-md text-center flex items-center justify-center'}`;
 
     // Track hovered images using useRef
   const hoveredPhotosRef = useState(new Set());
