@@ -275,7 +275,7 @@ const profileImageVariants = {
             viewport={{ once: true }}
             className="flex flex-wrap justify-center gap-3"
           >
-            {["Design", "Configurations", "Wiring Mod Scripts", "SQL & Database Management", "Extension Development & Implementation", "Creating Test Scripts", "Testing Extensions", "Go Live Testing & Support", "Issue Troubleshooting & Resolution", "Performing Code Changes", "Writing SQL Views and Editing Stored Procedures", "Translating Client Needs to Internal Development Teams", "Solution Demos", "Client Meetings & Relationship Management", "Mentoring Junior Consultants", "Delivering SQL Training Classes"].map((item) => (
+            {["Design", "Configurations", "Writing Mod Scripts", "SQL & Database Management", "Extension Development & Implementation", "Creating Test Scripts", "Testing Extensions", "Go Live Testing & Support", "Issue Troubleshooting & Resolution", "Performing Code Changes", "Writing SQL Views and Editing Stored Procedures", "Translating Client Needs to Internal Development Teams", "Solution Demos", "Client Meetings & Relationship Management", "Mentoring Junior Consultants", "Delivering SQL Training Classes"].map((item) => (
               <motion.div key={item} variants={listItemVariants} className={tagStyles}>
                 {item}
               </motion.div>
