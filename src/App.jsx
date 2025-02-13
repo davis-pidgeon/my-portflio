@@ -9,11 +9,67 @@ useEffect(() => {
   document.documentElement.classList.add("text-[#2D3748]");
 }, []);
 
+const profileImageVariants = {
+  hidden: { opacity: 0, scale: 0.8, rotate: 0 },
+  visible: { opacity: 1, scale: 1, rotate: 0, transition: { duration: 0.5, ease: "easeOut" } },
+};
+
   const sectionVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0, transition: { duration: 1 } },
   };
 
+  const parallaxVariants = {
+    hidden: { opacity: 0, y: 70 },
+    visible: { opacity: 1, y: 0, transition: { duration: 1.5, ease: "easeOut" } },
+  };  
+
+
+  const caseStudiesContainerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.25 }, // Delay between each card
+    }
+  };
+  
+  const caseStudyItemVariants = {
+    hidden: { opacity: 0, y: 70 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.75, ease: "easeIn" } }
+  };
+  
+
+  
+  const listItemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+  };
+
+
+  const [scrollSpeed, setScrollSpeed] = useState(0);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      const speed = Math.abs(currentScrollY - lastScrollY); // Calculate speed
+  
+      setScrollSpeed(speed); // Update state with scroll speed
+      setLastScrollY(currentScrollY); // Update last known scroll position
+    };
+  
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+  
+  const dynamicStaggerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: Math.max(0.15, 0.35 - scrollSpeed * 0.002) } // Min stagger: 0.05s, max: 0.3s
+    }
+  };
+  
   const photoVariantsjob = {
     hidden: { opacity: 0, x: 50 },
     visible: { opacity: 1, x: 0, transition: { duration: 1 } },
@@ -126,9 +182,9 @@ useEffect(() => {
             src="https://davis-pidgeon.github.io/my-portfolio/images/davis2.jpeg"
             alt="Davis Pidgeon"
             className="w-40 h-40 rounded-full shadow-lg border-4 border-[#A76D47]"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
+            variants={profileImageVariants}
+            initial="hidden"
+            animate="visible"
           />
           <h1 className="text-4xl font-bold text-center text-[#568EA3]">Davis Pidgeon</h1>
           <p className="text-center text-lg">
@@ -161,7 +217,7 @@ useEffect(() => {
         <div className="mt-12">
           <h2 className="text-2xl font-semibold text-center mb-6 text-[#568EA3]">Case Studies & Helpful Links</h2>
           <motion.div
-            variants={sectionVariants}
+            variants={caseStudiesContainerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
@@ -193,6 +249,7 @@ useEffect(() => {
                 href={client.url}
                 target="_blank"
                 rel="noopener noreferrer"
+                variants={caseStudyItemVariants} // Apply staggered effect
                 className="relative p-3 bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition-transform text-white flex flex-col items-center text-center overflow-hidden group"
                 whileHover={{ scale: 1.05 }}
               >
@@ -212,14 +269,16 @@ useEffect(() => {
         <div className="mt-16">
           <h2 className="text-2xl font-semibold text-center mb-6 text-[#568EA3]">Functional Experience</h2>
           <motion.div
-            variants={sectionVariants}
+            variants={dynamicStaggerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             className="flex flex-wrap justify-center gap-3"
           >
             {["Design", "Configurations", "Wiring Mod Scripts", "SQL & Database Management", "Extension Development & Implementation", "Creating Test Scripts", "Testing Extensions", "Go Live Testing & Support", "Issue Troubleshooting & Resolution", "Performing Code Changes", "Writing SQL Views and Editing Stored Procedures", "Translating Client Needs to Internal Development Teams", "Solution Demos", "Client Meetings & Relationship Management", "Mentoring Junior Consultants", "Delivering SQL Training Classes"].map((item) => (
-              <div key={item} className={tagStyles}>{item}</div>
+              <motion.div key={item} variants={listItemVariants} className={tagStyles}>
+                {item}
+              </motion.div>
             ))}
           </motion.div>
         </div>
@@ -228,14 +287,16 @@ useEffect(() => {
         <div className="mt-16">
           <h2 className="text-2xl font-semibold text-center mb-6 text-[#568EA3]">Software Proficiency</h2>
           <motion.div
-            variants={sectionVariants}
+            variants={dynamicStaggerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             className="flex flex-wrap justify-center gap-3"
           >
             {["Manhattan WMoS", "PorterLogic", "SQL & Database Management", "VS Code", "Oracle", "Postgres", "Postman", "ChatGPT", "Jira", "Putty", "Excel", "VBA", "XML", "Python", "JavaScript", "MS Access", "Notepad++", "FileZilla", "GraphQL", "TCP Test Tool", "Vocollect", "FlexSim", "AutoCAD"].map((item) => (
-              <div key={item} className={tagStyles}>{item}</div>
+              <motion.div key={item} variants={listItemVariants} className={tagStyles}>
+              {item}
+              </motion.div>
             ))}
           </motion.div>
         </div>
@@ -244,14 +305,16 @@ useEffect(() => {
         <div className="mt-16 mb-12">
           <h2 className="text-2xl font-semibold text-center mb-6 text-[#568EA3]">Key Personal Strengths</h2>
           <motion.div
-            variants={sectionVariants}
+            variants={dynamicStaggerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             className="flex flex-wrap justify-center gap-3"
           >
             {["Problem Solving", "Critical Thinking", "Handling Ambiguity", "Taking Initiative", "Leadership", "Adding Value", "Time Management", "Multi-tasking", "Communication", "Strong Work Ethic"].map((item) => (
-              <div key={item} className={tagStyles}>{item}</div>
+              <motion.div key={item} variants={listItemVariants} className={tagStyles}>
+              {item}
+              </motion.div>
             ))}
           </motion.div>
         </div>
