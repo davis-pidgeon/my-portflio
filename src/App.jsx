@@ -94,25 +94,25 @@ const profileImageVariants = {
   const hoveredPhotosRef = useState(new Set());
 
   const jobPhotos = [
-    { name: "Client Visit with PPE", img: "https://davis-pidgeon.github.io/my-portfolio/images/client-visit.jpeg" },
+    { name: "Client Visit with Thistle (With Proper PPE)", img: "https://davis-pidgeon.github.io/my-portfolio/images/client-visit.jpeg" },
     { name: "Full Circle Moment!", img: "https://davis-pidgeon.github.io/my-portfolio/images/on-the-job1.jpeg" },
-    { name: "MODEX", img: "https://davis-pidgeon.github.io/my-portfolio/images/on-the-job2.jpeg" },
+    { name: "MODEX in Atlanta (booth A12405 to be specific!)", img: "https://davis-pidgeon.github.io/my-portfolio/images/on-the-job2.jpeg" },
     { name: "Manhattan Associates", img: "https://davis-pidgeon.github.io/my-portfolio/images/on-the-job5.jpeg" },
-    { name: "CSCMP", img: "https://davis-pidgeon.github.io/my-portfolio/images/on-the-job3.jpeg" },
+    { name: "CSCMP EDGE in Orlando (booth 232!)", img: "https://davis-pidgeon.github.io/my-portfolio/images/on-the-job3.jpeg" },
     { name: "ACE Colorado Springs Warehouse", img: "https://davis-pidgeon.github.io/my-portfolio/images/on-the-job4.jpeg" },
-    { name: "Client Visit", img: "https://davis-pidgeon.github.io/my-portfolio/images/on-the-job6.jpeg" },
-    { name: "CSCMP Jedi", img: "https://davis-pidgeon.github.io/my-portfolio/images/on-the-job7.jpeg" }
+    { name: "Client Visit with Thistle", img: "https://davis-pidgeon.github.io/my-portfolio/images/on-the-job6.jpeg" },
+    { name: "CSCMP EDGE in Orlando (Had to stop by Disney and get a lightsaber of course)", img: "https://davis-pidgeon.github.io/my-portfolio/images/on-the-job7.jpeg" }
   ];
 
    const hobbyPhotos = [
-     { name: "Accadia NP", img: "https://davis-pidgeon.github.io/my-portfolio/images/travel1.jpeg" },
-     { name: "Olympic NP Sunrise", img: "https://davis-pidgeon.github.io/my-portfolio/images/davis1.jpeg" },
-     { name: "Olympic NP Beach Day", img: "https://davis-pidgeon.github.io/my-portfolio/images/travel2.jpeg" },
-     { name: "Yosemite NP", img: "https://davis-pidgeon.github.io/my-portfolio/images/travel3.jpeg" },
-     { name: "Joshua Tree NP", img: "https://davis-pidgeon.github.io/my-portfolio/images/travel4.jpeg" },
-     { name: "Rocky Mnt NP", img: "https://davis-pidgeon.github.io/my-portfolio/images/travel5.jpeg" },
+     { name: "Acadia National Park", img: "https://davis-pidgeon.github.io/my-portfolio/images/travel1.jpeg" },
+     { name: "Olympic National Park Sunrise", img: "https://davis-pidgeon.github.io/my-portfolio/images/davis1.jpeg" },
+     { name: "Kalaloach at Olympic National Park", img: "https://davis-pidgeon.github.io/my-portfolio/images/travel2.jpeg" },
+     { name: "Yosemite National Park", img: "https://davis-pidgeon.github.io/my-portfolio/images/travel3.jpeg" },
+     { name: "Joshua Tree National Park", img: "https://davis-pidgeon.github.io/my-portfolio/images/travel4.jpeg" },
+     { name: "Rocky Mountain National Park", img: "https://davis-pidgeon.github.io/my-portfolio/images/travel5.jpeg" },
      { name: "Pikes Peak", img: "https://davis-pidgeon.github.io/my-portfolio/images/travel6.jpeg" },
-     { name: "Camping", img: "https://davis-pidgeon.github.io/my-portfolio/images/travel7.jpeg" }
+     { name: "Sope Creek Ruins", img: "https://davis-pidgeon.github.io/my-portfolio/images/travel7.jpeg" }
   ];
 
   
